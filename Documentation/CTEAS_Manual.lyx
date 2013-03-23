@@ -1,0 +1,5416 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage{hyperref}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_title "Coefficient of Thermal Expansion Analysis Suite (CTEAS) - User Manual"
+\pdf_author "Zachary A. Jones"
+\pdf_subject "CTEAS"
+\pdf_keywords "CTEAS, xray, x-ray, diffraction, thermal expansion"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 3
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Coefficient of Thermal Expansion Analysis Suite (CTEAS) - User Manual
+\end_layout
+
+\begin_layout Author
+Zachary A.
+ Jones
+\end_layout
+
+\begin_layout Date
+December 17, 2012
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../KrivenResearch/Ellipsoid/CTEAS Documentation/Figures/CTEAS_Logo_Named.png
+	scale 66
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item[
+\backslash
+,]
+\end_layout
+
+\end_inset
+
+This software was produced as part of a project funded by the Air Force
+ Office of Scientific Research under contract FA9550-06-1-0386.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item[
+\backslash
+,]
+\end_layout
+
+\end_inset
+
+To cite CTEAS, please use the following (or equivalent):
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+item[
+\backslash
+,]
+\end_layout
+
+\end_inset
+
+Z.A.
+ Jones, P.
+ Sarin, R.P.
+ Haggerty, and W.M.
+ Kriven, 
+\begin_inset Quotes eld
+\end_inset
+
+CTEAS: A GUI based program to determine thermal expansion from HTXRD,
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\shape italic
+Journal of Applied Crystallography
+\shape default
+, XXXXX (2012).
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Introduction}
+\end_layout
+
+\end_inset
+
+Introduction
+\end_layout
+
+\begin_layout Standard
+The Coefficient of Thermal Expansion Analysis Suite (CTEAS) has been developed
+ to calculate and visualize thermal expansion properties of crystalline
+ materials in three dimensions.
+ A series of heating and/or cooling powder X-ray diffraction patterns can
+ be analyzed to determine d-spacings for various hkl planes, and corresponding
+ lattice constants for the crystalline phase of interest at each temperture
+ and used as an input for CTEAS.
+ Alternatively, Rietveld refinement of the crystalline phase structure can
+ also yield the required input parameters for CTEAS.
+ Using this input, CTEAS fits a polynomial curve (default: quadratic) to
+ the lattice parameters as a function of temperature.
+ It then calculates the elements of a rank two thermal expansion tensor
+ based on crystal symmetry over a range of temperatures.
+ These tensors are sufficient to qualify the thermal expansion of the crystallin
+e phase in three dimensions.
+ CTEAS allows the user the flexibility of output in various formats including
+ spreadsheet data, three-dimensional plots of thermal expansion, two-dimensional
+ sections through the thermal expansion ellipsoid, expansion along a user-define
+d direction, and movies of the expansion over a range of temperatures.
+ 
+\end_layout
+
+\begin_layout Standard
+It is recommended that the user first becomes familiar with the user manual
+ and has the basic understanding of the input and output of this program.
+ If there are further questions that this user manual does not address,
+ please send an email to the address provided in the contact information.
+ Supporting technical documentation can be found at 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{http://kriven.matse.illinois.edu/CTEAS.html}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section*
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Installation and Setup}
+\end_layout
+
+\end_inset
+
+Installation and Setup
+\end_layout
+
+\begin_layout Standard
+The installation of CTEAS is straightforward.
+ The following support programs are required for it to fully function:
+\end_layout
+
+\begin_layout Enumerate
+Windows XP SP3 or newer
+\end_layout
+
+\begin_layout Enumerate
+Matlab (2007 and later) (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{http://www.mathworks.com/products/matlab/index.html}
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+Matlab 
+\begin_inset Quotes eld
+\end_inset
+
+Simulink 3D Animation
+\begin_inset Quotes erd
+\end_inset
+
+ Toolbox
+\end_layout
+
+\begin_layout Enumerate
+Microsoft Office 2003, 2007, or 2010 (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{http://office.microsoft.com/}
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+Office Web Components 2003 with latest updates from Microsoft Update (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{http://www.microsoft.com/download/en/details.aspx?displaylang=en&id=22276}
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+Internet connectivity for installation only
+\end_layout
+
+\begin_layout Standard
+The downloaded .zip file containing the CTEAS installer and support files
+ should be unzipped in an accessible location on the computer.
+ Running the setup.exe file will start the CTEAS installer.
+ It will ask for a location (C:
+\backslash
+Program Files by default) and begin installing.
+ The CTEAS installer should install the National Instruments RunTime 2010
+ libraries during installation.
+ If any errors are encountered during installation, continue the installation
+ (ignoring errors) and install these libraries manually.
+ They can be found at:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{http://joule.ni.com/nidu/cds/view/p/lang/en/id/2087}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The CTEAS installer will install the CTEAS executable and a folder containing
+ Matlab functions that are used during operation.
+ These Matlab functions are also usable without the CTEAS graphical interface,
+ using only Matlab for operation.
+ It is recommended that the user becomes familiar with these files, if only
+ to understand the background operation of CTEAS.
+ They are read-only to protect program operation, but copyable to other
+ directories.
+ More advanced functionality can be obtained using the Matlab command line,
+ but proficiency in the Matlab programming language is required.
+\end_layout
+
+\begin_layout Standard
+A folder in the Start menu will be created containing a link to the CTEAS
+ executable.
+ CTEAS can be uninstalled using the Control Panel Add/Remove Programs functional
+ity in Windows.
+ Subsequent updates of the CTEAS program will need to be installed by first
+ uninstalling the old version and then installing the new version to eliminate
+ file conflicts.
+\end_layout
+
+\begin_layout Part*
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{How to Use CTEAS}
+\end_layout
+
+\end_inset
+
+How to Use CTEAS
+\end_layout
+
+\begin_layout Standard
+Starting CTEAS will bring up the window shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:CTEAS-GUI-About-Page"
+
+\end_inset
+
+.
+ CTEAS operation is divided into three steps, which appear as tabs: STEP
+ 1: DATA, STEP 2: ANALYSIS, and STEP 3: RESULTS.
+ The content of each tab relates to the functions of the program that are
+ applicable at that stage during operation.
+ The following sections describe the operation of the program during each
+ step and a basic operation flow.
+ Pressing the 
+\begin_inset Quotes eld
+\end_inset
+
+STOP
+\begin_inset Quotes erd
+\end_inset
+
+ button at any time or on any tab will terminate the program and requires
+ the user to start again from the beginning.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{section}{1}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{subsection}{1}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../KrivenResearch/Ellipsoid/CTEAS Documentation/Figures/About-Page.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+CTEAS GUI - Opening Frame
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:CTEAS-GUI-About-Page"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The first step in CTEAS operation involves loading of formatted data files.
+ Clicking on the STEP 1: DATA tab displays the window shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:CTEAS-GUI-Step1"
+
+\end_inset
+
+.
+ CTEAS is configured to read output from its own CTEAS InputMaker.
+ A button has been included on the front panel of the graphical interface
+ to load CTEAS InputMaker during operation.
+ Since CTEAS InputMaker is a separate interface from the main program, it
+ is described later.
+ Refer to Appendix B for CTEAS InputMaker operation.
+ 
+\series bold
+NOTE:
+\series default
+ CTEAS will NOT be operable until the Stop button has been clicked on the
+ CTEAS InputMaker panel.
+\end_layout
+
+\begin_layout Section*
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{subsection}{Step 1: Data}
+\end_layout
+
+\end_inset
+
+STEP 1: DATA
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../KrivenResearch/Ellipsoid/CTEAS Documentation/Figures/Step1.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+CTEAS GUI - Load Data Files (REMOVE FROM PLATINUM ABOVE)
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:CTEAS-GUI-Step1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{subsubsection}{0}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Specifying a Working Directory
+\end_layout
+
+\begin_layout Standard
+The CTERun Path is automatically populated as the CTEAS installation directory.
+ CTEAS requires the user to specify a folder containing input files (*.csv)
+ for it to load and analyze.
+ The following steps must be taken to ensure the correct operation of the
+ program:
+\end_layout
+
+\begin_layout Enumerate
+Click on the file icon beside the text box under 
+\begin_inset Quotes eld
+\end_inset
+
+Input File Directory Path.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Navigate to the folder containing the files created using CTEAS InputMaker
+ to be analyzed, then click the 
+\begin_inset Quotes eld
+\end_inset
+
+Current Folder
+\begin_inset Quotes erd
+\end_inset
+
+ button in the bottom right of the selection window.
+\end_layout
+
+\begin_layout Subsubsection
+Loading Files Into CTEAS
+\end_layout
+
+\begin_layout Standard
+Click the 
+\begin_inset Quotes eld
+\end_inset
+
+Load Files
+\begin_inset Quotes erd
+\end_inset
+
+ button.
+ CTEAS will then locate all .csv data files in the input directory and list
+ them in the 
+\begin_inset Quotes eld
+\end_inset
+
+Temperature Data
+\begin_inset Quotes erd
+\end_inset
+
+ area.
+ The files will be listed in order of increasing temperature.
+ A green light will turn on in the bottom right of the interface, signaling
+ the user that data have been loaded and values have been saved.
+ The user has the option of editing the displayed temperature values before
+ proceeding to Step 2: Run Setup.
+\end_layout
+
+\begin_layout Subsubsection
+Temperature Options
+\end_layout
+
+\begin_layout Standard
+CTEAS can only output thermal expansion correctly if temperature is input
+ correctly.
+ The user can manually edit values by double-clicking on unsatisfactory
+ values in the 
+\begin_inset Quotes eld
+\end_inset
+
+Temperature Data
+\begin_inset Quotes erd
+\end_inset
+
+ window and assigning new values.
+ During this editing period, the green light will turn off, signaling the
+ user that the program is not ready to proceed to Step 2 yet.
+ Once all corrected temperature values are set, click the 
+\begin_inset Quotes eld
+\end_inset
+
+Manual Temp Edit
+\begin_inset Quotes erd
+\end_inset
+
+ button and the CTEAS backend will update with the new values.
+ The green light will then appear lit again.
+ The user is now able to proceed to Step 2: Run Setup.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{subsection}{Step 2: Analysis}
+\end_layout
+
+\end_inset
+
+STEP 2: ANALYSIS
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Figures/Step2.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+CTEAS GUI - Step 2: Run Setup
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:CTEAS-GUI-Step2"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Step 2 centers around setting up an analysis and selecting a crystalline
+ phase contained within the input files.
+ When the input files have been loaded into CTEAS from STEP 1: DATA, the
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Step 1 Data Loaded
+\begin_inset Quotes erd
+\end_inset
+
+ indicator will show green in the STEP 2: ANALYSIS tab.
+ An input file can contain multiple phases and materials, leaving the user
+ to decide which phase and material to analyze.
+ The following steps should be followed for desired operation of CTEAS:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{subsection}{2}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{subsubsection}{0}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Selecting a Detected Phase
+\end_layout
+
+\begin_layout Standard
+Click on the drop-down arrow beside the box under 
+\begin_inset Quotes eld
+\end_inset
+
+Phase to be Analyzed
+\begin_inset Quotes erd
+\end_inset
+
+ and select a phase for analysis.
+ The Crystal Symmetry box will be automatically populated for the corresponding
+ symmetry.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Deciding the Polynomial Fit Order
+\end_layout
+
+\begin_layout Standard
+The 
+\begin_inset Quotes eld
+\end_inset
+
+Polynomial Fit Order,
+\begin_inset Quotes erd
+\end_inset
+
+ which is set at 2 by default, a.) specifies the order of the polynomial
+ used to fit the lattice parameters as a function of temperature, and b.)
+ defines the number of terms in the polynomial expansion of 
+\begin_inset Formula $\alpha_{hkl}$
+\end_inset
+
+ as a function of temperature.
+ The polynomial fits are used to determine lattice parameters and 
+\begin_inset Formula $d_{hkl}$
+\end_inset
+
+ values at intermediate temperatures within the experimental temperature
+ range.
+ 
+\end_layout
+
+\begin_layout Paragraph
+NOTE: 
+\end_layout
+
+\begin_layout Standard
+In order to use a polynomial fit order of 2, there must be at least 4 temperatur
+e files at which the phase exists.
+ In order to use a polynomial fit order of 3, there must be at least 5 temperatu
+re files at which the phase exists.
+ This is to ensure that a curve can be fit to the data.
+ 
+\series bold
+A quick check to determine the correct polynomial order is to view the fit
+ to the lattice constants.
+\end_layout
+
+\begin_layout Subsubsection
+Set Temperature Ranges for Analysis
+\end_layout
+
+\begin_layout Enumerate
+Temperature ranges must be specified for analysis.
+ The 
+\begin_inset Quotes eld
+\end_inset
+
+Low Temperature
+\begin_inset Quotes erd
+\end_inset
+
+ may not be more than 50°C lower than the minimum temperature specified
+ in the input files.
+ For example, if room temperature data (20°C) was taken, the lowest temperature
+ that could be entered in the 
+\begin_inset Quotes eld
+\end_inset
+
+Low Temperature
+\begin_inset Quotes erd
+\end_inset
+
+ box would be -30.
+ Any temperature entered beyond this bound will result in a coefficient
+ of thermal expansion matrix of zeroes.
+ An upper bound of 50°C is placed on the 
+\begin_inset Quotes eld
+\end_inset
+
+High Temperature
+\begin_inset Quotes erd
+\end_inset
+
+ as well to ensure that the analysis does not extrapolate too far beyond
+ collected data.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+A quick method of determining the temperature range of interest is to look
+ at the lattice parameter data using the 
+\begin_inset Quotes eld
+\end_inset
+
+View Crystal Lattice Parameters
+\begin_inset Quotes erd
+\end_inset
+
+ functionality described in the next section.
+\end_layout
+
+\begin_layout Enumerate
+It is recommended that the full temperature range at which a crystalline
+ phase exists be analyzed.
+ This is to ensure that the curve-fitting algorithms have the entirety of
+ data to influence the fit.
+\end_layout
+
+\begin_layout Enumerate
+The resolution of the temperature ranges can be specified down to 0.01°C.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+The 
+\begin_inset Quotes eld
+\end_inset
+
+Temperature Step
+\begin_inset Quotes erd
+\end_inset
+
+ box determines the 
+\begin_inset Formula $\Delta T$
+\end_inset
+
+ for analysis.
+ A temperature step of 25 will calculate a coefficient of thermal expansion
+ matrix for every 25°C within the low and high temperature range.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Note that if 
+\begin_inset Formula $(HighT-LowT)/\Delta T$
+\end_inset
+
+ is not an integer, a final temperature step is appended to the run that
+ allows calculation of a thermal expansion tensor at 
+\begin_inset Formula $HighT$
+\end_inset
+
+.
+ Since this final temperature would not have a temperature step that is
+ the same as the rest of the temperature calculations, subsequent graphical
+ analyses of the components at this temperature will not have the same temperatu
+re spacing as the rest of the data.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+View and Save Lattice Parameters
+\end_layout
+
+\begin_layout Standard
+The 
+\begin_inset Quotes eld
+\end_inset
+
+Save Lattice Parameters
+\begin_inset Quotes erd
+\end_inset
+
+ option will output a '.csv' file to the CTEAS_Output folder that is created
+ in the same directory as the input files.
+ There is no need to include the file extension while specifying a filename.
+ 
+\end_layout
+
+\begin_layout Standard
+If a temperature range and polynomial fit order have been specified, the
+ lattice parameters can be plotted directly from the interface.
+ Simply checking the boxes corresponding to which parameters the user wishes
+ to view and clicking the 
+\begin_inset Quotes eld
+\end_inset
+
+View Crystal Lattice Parameters
+\begin_inset Quotes erd
+\end_inset
+
+ button will enable this.
+ While 
+\begin_inset Formula $a$
+\end_inset
+
+, 
+\begin_inset Formula $b$
+\end_inset
+
+, and 
+\begin_inset Formula $c$
+\end_inset
+
+ lattice constants are plotted on one single graph, lattice constants 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, 
+\begin_inset Formula $\beta$
+\end_inset
+
+, and 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ are plotted on another.
+ For example, if in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:CTEAS-GUI-Step2"
+
+\end_inset
+
+, only the 
+\begin_inset Quotes eld
+\end_inset
+
+b
+\begin_inset Quotes erd
+\end_inset
+
+ parameter is checked, it will produce a single graph with the 
+\begin_inset Quotes eld
+\end_inset
+
+b
+\begin_inset Quotes erd
+\end_inset
+
+ lattice parameter plotted as a function of temperature.
+ 
+\end_layout
+
+\begin_layout Standard
+Each data point is displayed as a circle that corresponds to actual lattice
+ parameter measurements with a dotted line corresponding to the polynomial
+ fit of the lattice parameter.
+ In the legend, the coefficient of determination (
+\begin_inset Formula $R^{2}$
+\end_inset
+
+) is displayed.
+ This allows the user to determine if the polynomial fit order chosen is
+ 
+\begin_inset Quotes eld
+\end_inset
+
+good enough
+\begin_inset Quotes erd
+\end_inset
+
+ for the analysis.
+ Note that in most cases, a polynomial fit order of 2 is reasonable, however,
+ some cases may require use of higher order polynomials for better fit.
+ It is up to the users discretion to employ a higher order polynomial.
+\end_layout
+
+\begin_layout Subsubsection
+Running the Analysis
+\end_layout
+
+\begin_layout Standard
+Once the above steps have been completed, the 
+\begin_inset Quotes eld
+\end_inset
+
+Run Analysis
+\begin_inset Quotes erd
+\end_inset
+
+ button can be pressed.
+ This may take some time for the analysis to run, but once it has completed,
+ the 
+\begin_inset Quotes eld
+\end_inset
+
+Results Ready
+\begin_inset Quotes erd
+\end_inset
+
+ light will turn green.
+ This signifies that STEP 2: ANALYSIS has been completed and that the user
+ can proceed to the STEP 3: RESULTS tab.
+ Details of the background operations can be found in Appendix A.
+ It may be worthwhile to have familiarity with these operations.
+\end_layout
+
+\begin_layout Section*
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{subsection}{Step 3: Results}
+\end_layout
+
+\end_inset
+
+STEP 3: RESULTS
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Figures/Step3.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+CTEAS GUI - Step 3: Results
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:CTEAS-GUI-Step3"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{subsection}{3}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{subsubsection}{0}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Viewing and Saving Output
+\end_layout
+
+\begin_layout Standard
+The function of STEP 3: RESULTS is to provide the user with several options
+ to view and save the thermal expansion of an analyzed crystalline phase.
+ When the analysis has been run in STEP 2: ANALYSIS, the 
+\begin_inset Quotes eld
+\end_inset
+
+Step 2 Analysis Run
+\begin_inset Quotes erd
+\end_inset
+
+ indicator will show green in the STEP 3: RESULTS tab.
+ The following list will detail what each option means.
+ The size of generated figures can be defined in pixels for the X and Y
+ dimensions for all plots and movies.
+\end_layout
+
+\begin_layout Paragraph
+Make Movie:
+\end_layout
+
+\begin_layout Standard
+A movie of a thermal expansion ellipsoid can be created and saved.
+ This movie shows the change of the thermal expansion ellipsoid over the
+ range of temperatures from STEP 2: ANALYSIS.
+ Note that there is a 5-second 
+\begin_inset Quotes eld
+\end_inset
+
+freeze
+\begin_inset Quotes erd
+\end_inset
+
+ at the end of the temperature range to allow a still frame for description
+ during a presentation (some older media softwares go to a black screen
+ when the movie is complete, thus a 5 second 
+\begin_inset Quotes eld
+\end_inset
+
+pause
+\begin_inset Quotes erd
+\end_inset
+
+ allows a presenter to have a picture for a few seconds longer).
+ The movie file name can be user-specified (once again, the extension is
+ not needed) and the movie will be saved in the CTEAS_Output directory in
+ the same directory as the input files.
+ Creating a movie will output an uncompressed .avi file.
+ The size of the file can be very large depending on the size (in pixels)
+ that is chosen for the movie/figure output and the 
+\begin_inset Formula $\Delta T$
+\end_inset
+
+ chosen for analysis.
+ It is recommended that a 640x480 movie be generated, but larger movies
+ may be generated and transcoded with editing software should it be necessary.
+\end_layout
+
+\begin_layout Standard
+A 
+\begin_inset Quotes eld
+\end_inset
+
+Movie FPS
+\begin_inset Quotes erd
+\end_inset
+
+ box is located in the movie controls area that can be used to specify the
+ frames per second for the movie.
+ This is an integer.
+ Each calculated temperature step is a 
+\begin_inset Quotes eld
+\end_inset
+
+frame
+\begin_inset Quotes erd
+\end_inset
+
+ of the movie.
+ A 
+\begin_inset Quotes eld
+\end_inset
+
+Movie FPS
+\begin_inset Quotes erd
+\end_inset
+
+ value of 4 has generally been used during the development of CTEAS with
+ acceptable results.
+\end_layout
+
+\begin_layout Paragraph
+Make 3D Figure:
+\end_layout
+
+\begin_layout Standard
+This will plot a figure of the thermal expansion ellipsoid at a temperature
+ specified.
+ Any temperature within the high and low temperature bounds can be specified
+ for generation.
+ The plot appears in a Matlab window and can be repositioned or rotated
+ before saving.
+ The plot can be saved as a multitude of different filetypes.
+ Users of the command-line (Matlab-only, user-unfriendly) version can plot
+ multiple figures and temperatures at once.
+ This is a limitation of the GUI.
+\end_layout
+
+\begin_layout Paragraph
+Make Eigenvalue Plot:
+\end_layout
+
+\begin_layout Standard
+Checking this box will generate a figure of the eigenvalues of the second-rank
+ thermal expansion tensors from lowest temperature to highest temperature.
+ The plot is a Matlab plot similar to the Make 3D Figure plot.
+\end_layout
+
+\begin_layout Paragraph
+Make CSV File:
+\end_layout
+
+\begin_layout Standard
+The Make CSV File option requires a reference hkl (or uvw) to be set for
+ calculation of the Eigenvector Angles.
+ This is, by default, the c-axis, i.e.
+ (001), which is parallel to the z-axis in orthonormal space.
+ Upon checking the 
+\begin_inset Quotes eld
+\end_inset
+
+Make CSV File
+\begin_inset Quotes erd
+\end_inset
+
+ box and specifying the reference hkl, a comma-separated variable (.csv)
+ file with the user-specified filename will be written in the CTEAS_Output
+ directory.
+ This file contains lines formatted as the following:
+\end_layout
+
+\begin_layout Verse
+Temperature, CTE Tensor Elements (1,1) through (3,3), Eigenvalues (1 through
+ 3), The Three Eigenvectors (x,y,z), Eigenvector Angles, Average Thermal
+ Expansion Coefficient, Bulk Volume Expansion Coefficient
+\end_layout
+
+\begin_layout Paragraph
+Make 2D Figure:
+\end_layout
+
+\begin_layout Standard
+A two-dimensional 
+\begin_inset Quotes eld
+\end_inset
+
+section
+\begin_inset Quotes erd
+\end_inset
+
+ of the thermal expansion ellipsoid can be created using this option.
+ The ellipsoid 
+\begin_inset Quotes eld
+\end_inset
+
+section
+\begin_inset Quotes erd
+\end_inset
+
+ is displayed in a Matlab plot window.
+ The H, K, and L values in the boxes to the right of the 
+\begin_inset Quotes eld
+\end_inset
+
+Make 2D Figures
+\begin_inset Quotes erd
+\end_inset
+
+ checkbox in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:CTEAS-GUI-Step3"
+
+\end_inset
+
+ specify a reference hkl plane.
+ For example, in a cubic system, specifying an hkl of (010), i.e.
+ the b-axis, will display a planar 
+\begin_inset Quotes eld
+\end_inset
+
+section
+\begin_inset Quotes erd
+\end_inset
+
+ of the thermal expansion in the a-c plane.
+ Alternatively, the user can specify a uvw direction by selecting the 
+\begin_inset Quotes eld
+\end_inset
+
+UVW
+\begin_inset Quotes erd
+\end_inset
+
+ option in the 
+\begin_inset Quotes eld
+\end_inset
+
+HKL or UVW
+\begin_inset Quotes erd
+\end_inset
+
+ selector.
+ When 
+\begin_inset Quotes eld
+\end_inset
+
+UVW
+\begin_inset Quotes erd
+\end_inset
+
+ is specified, CTEAS calculates a planar normal to the direction specified
+ and uses it as the plane 
+\begin_inset Quotes eld
+\end_inset
+
+section
+\begin_inset Quotes erd
+\end_inset
+
+ through the ellipsoid.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Make 2D Figure CSV File:
+\end_layout
+
+\begin_layout Standard
+Checking this box will output the x and y data of the 
+\begin_inset Quotes eld
+\end_inset
+
+Make 2D Figures
+\begin_inset Quotes erd
+\end_inset
+
+ option to a file specified by 
+\begin_inset Quotes eld
+\end_inset
+
+2D Figure CSV Filename
+\begin_inset Quotes erd
+\end_inset
+
+ in the CTEAS_Output directory.
+ NOTE that a filename extension is not needed.
+\end_layout
+
+\begin_layout Paragraph
+Make hkl (or uvw) Expansion Plot:
+\end_layout
+
+\begin_layout Standard
+A thermal expansion plot is created corresponding to the chosen hkl (using
+ the same H,K, and L boxes from the Make 2D Figures option) that details
+ the thermal expansion along the normal of the hkl plane (or uvw direction
+ if the option is selected).
+\end_layout
+
+\begin_layout Paragraph
+Make hkl (or uvw) Expansion CSV File:
+\end_layout
+
+\begin_layout Standard
+Outputs the CTE and Temperature data of the 
+\begin_inset Quotes eld
+\end_inset
+
+Make hkl (or uvw) Expansion Plot
+\begin_inset Quotes erd
+\end_inset
+
+ option to a file specified by 
+\begin_inset Quotes eld
+\end_inset
+
+hkl (or uvw) Expansion CSV Filename
+\begin_inset Quotes erd
+\end_inset
+
+ in the CTEAS_Output directory.
+ NOTE that a filename extension is not needed.
+\end_layout
+
+\begin_layout Section*
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Troubleshooting}
+\end_layout
+
+\end_inset
+
+Troubleshooting
+\end_layout
+
+\begin_layout Standard
+While CTEAS has been tested extensively, errors may still occur during operation.
+ The most likely cause of software malfunction deals with user-formatting
+ of input files.
+ The CTEAS InputMaker creates a file that will always be able to be read
+ by CTEAS.
+ 
+\end_layout
+
+\begin_layout Standard
+Other problems that may occur during operation are arranged by program tab
+ and listed as follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="33text%">
+<column alignment="center" valignment="top" width="33text%">
+<column alignment="center" valignment="top" width="33text%">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Error
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Reason(s)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Suggested Solution
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+Error 7 occurred at Open File+.vi:Open File
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+No input files located in folder.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+Check Input File Directory Path
+\end_layout
+
+\begin_layout Itemize
+Check if any files exist.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+Error 43 occurred at Open File+.vi:File Dialog
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+Remove from Analysis clicked with no loaded files
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+Load input files.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+Program not responding
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+Program is not running in LabVIEW container
+\end_layout
+
+\begin_layout Itemize
+Program has frozen while trying to load incompatible .csv data files
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+Ensure that the black 
+\begin_inset Quotes eld
+\end_inset
+
+Run
+\begin_inset Quotes erd
+\end_inset
+
+ arrow is toggled down in the run position.
+\end_layout
+
+\begin_layout Itemize
+Terminate Program, re-open.
+ Correct .csv files using the CTEAS InputMaker.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+No movie output
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+Plot window closed during movie frame creation
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+Re-run Get Results for movie, do NOT close any popups.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+File outputs have two ending extensions (eg: file.csv.csv)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+Extension added automatically, one isn't necessary
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+Rename the file.
+ Do not add an extension to filenames in CTEAS.
+ It is done automatically for you.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Common Errors During CTEAS Operation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If a problem occurs that isn't formally addressed in this documentation,
+ please contact the Kriven Research Group using the contact information
+ below and address the problem with them.
+ 
+\end_layout
+
+\begin_layout Section*
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Contact Informaton}
+\end_layout
+
+\end_inset
+
+Contact Information
+\end_layout
+
+\begin_layout LyX-Code
+\paragraph_spacing single
+Waltraud M.
+ Kriven, Ph.D.
+\end_layout
+
+\begin_layout LyX-Code
+\paragraph_spacing single
+Professor of Materials Science and Engineering
+\end_layout
+
+\begin_layout LyX-Code
+\paragraph_spacing single
+The University of Illinois at Urbana-Champaign
+\end_layout
+
+\begin_layout LyX-Code
+\paragraph_spacing single
+1304 W.
+ Green St., Urbana, IL 61801
+\end_layout
+
+\begin_layout LyX-Code
+\paragraph_spacing single
+Tel: +1 217 333 5258
+\end_layout
+
+\begin_layout LyX-Code
+\paragraph_spacing single
+Fax: +1 217 333 2736
+\end_layout
+
+\begin_layout LyX-Code
+\paragraph_spacing single
+e-mail: kriven@illinois.edu
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part*
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{part}{APPENDIX A: List of Matlab Functions}
+\end_layout
+
+\end_inset
+
+APPENDIX A: List of Matlab Functions
+\end_layout
+
+\begin_layout Standard
+This is a list of the included Matlab functions with CTEAS and a short explanati
+on of their purpose and use.
+ Further details and operation information can and should be gained by reading
+ the documentation within each function and analyzing the contained Matlab
+ code.
+ Any suggestions for improvement, better description, and bug-fixes should
+ be forwarded to the Kriven Research Group using the above contact information
+ and are greatly appreciated.
+ There are 36 Matlab files associated with CTEAS in its current release
+ state.
+ These files are constantly being updated and improved, therefore a detailed
+ description of their mathematical functionality can be found in the CTERun
+ Technical Documentation document included in the CTEAS installation directory.
+ 
+\end_layout
+
+\begin_layout Paragraph
+addArrow4.m
+\end_layout
+
+\begin_layout Standard
+Adds an arrow to a two-dimensional thermal expansion plot.
+ Returns true or false, depending on the arrow being in the plane of expansion.
+\end_layout
+
+\begin_layout Paragraph
+angToorth.m
+\end_layout
+
+\begin_layout Standard
+Converts a set of 
+\begin_inset Formula $\theta$
+\end_inset
+
+ and 
+\begin_inset Formula $\phi$
+\end_inset
+
+ angles to orthonormal x,y, and z coordinates with unit-length.
+\end_layout
+
+\begin_layout Paragraph
+antirotateVect.m
+\end_layout
+
+\begin_layout Standard
+Rotates a vector by 
+\begin_inset Formula $\theta$
+\end_inset
+
+ and 
+\begin_inset Formula $\phi$
+\end_inset
+
+ about crystallographyic axes in the opposite way of rotateVect.m.
+\end_layout
+
+\begin_layout Paragraph
+CTERun.m
+\end_layout
+
+\begin_layout Standard
+Wrapper script to run CTEAS using only Matlab.
+ All options are set within the CTERun.m file itself and some examples have
+ been left commented out to show how syntax MUST be followed.
+ There are many options, all of which are internally documented to aid the
+ user.
+\end_layout
+
+\begin_layout Paragraph
+eigenshuffle.m
+\end_layout
+
+\begin_layout Standard
+Function created by John D'Errico (contact information within file) that
+ outputs an unsorted list of eigenvectors and eigenvalues.
+ This is useful for overlapping plots of eigenvalues getting sorted incorrectly.
+ This function also utilizes code written by Yi Cao called munkres.m.
+ eigenshuffle.m has been included with permission from the author.
+\end_layout
+
+\begin_layout Paragraph
+EllipseWrap.m
+\end_layout
+
+\begin_layout Standard
+Creates a plot of two-dimensional expansion perpendicular to a vector in
+ hkl or uvw space.
+ This is a complicated function that will require reading to understand
+ fully.
+\end_layout
+
+\begin_layout Paragraph
+EVAngles.m
+\end_layout
+
+\begin_layout Standard
+Calculates the angles between the eigenvectors of the thermal expansion
+ ellipsoid and the c-axis (parallel to the Z-axis) by default, or any other
+ specified vector in hkl or uvw space.
+\end_layout
+
+\begin_layout Paragraph
+evplotcut.m
+\end_layout
+
+\begin_layout Standard
+Plots and labels the eigenvectors of a two-dimensional thermal expansion
+ plane.
+\end_layout
+
+\begin_layout Paragraph
+getcsvdata.m 
+\end_layout
+
+\begin_layout Standard
+Function to read .csv files created by CTEAS InputMaker and save as Matlab
+ variables.
+\end_layout
+
+\begin_layout Paragraph
+getCTEeigVecAngle.m
+\end_layout
+
+\begin_layout Standard
+Function to calculate the angles between a specified hkl or uvw and the
+ eigenvectors of the thermal expansion ellipsoid.
+\end_layout
+
+\begin_layout Paragraph
+getCTEPlane.m
+\end_layout
+
+\begin_layout Standard
+Function to get the average thermal expansion in a plane where T1 is the
+ angle between the plane normal and the z axis and T2 is the angle between
+ the projection of the plane normal on the x-y plane and the x axis.
+\end_layout
+
+\begin_layout Paragraph
+getCTEVect.m
+\end_layout
+
+\begin_layout Standard
+Function to calculate the thermal expansion along a vector at a given temperatur
+e.
+\end_layout
+
+\begin_layout Paragraph
+getPtTemp.m
+\end_layout
+
+\begin_layout Standard
+Function to look through saved data and adjust temperatures based on platinum
+ lattice constants.
+\end_layout
+
+\begin_layout Paragraph
+getRotationMat.m
+\end_layout
+
+\begin_layout Standard
+Function to calculate a rotation matrix between two systems of coordinates.
+\end_layout
+
+\begin_layout Paragraph
+getrrpdata.m 
+\end_layout
+
+\begin_layout Standard
+Function to read JADE .rrp files and save as Matlab variables (Not used in
+ public CTEAS version due to formatting options).
+\end_layout
+
+\begin_layout Paragraph
+HKLExpansion.m
+\end_layout
+
+\begin_layout Standard
+Creates a plot of the thermal expansion along a vector in hkl or uvw space.
+\end_layout
+
+\begin_layout Paragraph
+UVWToAng.m
+\end_layout
+
+\begin_layout Standard
+Converts a uvw direction to 
+\begin_inset Formula $\phi$
+\end_inset
+
+ and 
+\begin_inset Formula $\theta$
+\end_inset
+
+ angles (deg) with unit length.
+\end_layout
+
+\begin_layout Paragraph
+UVWToorth.m
+\end_layout
+
+\begin_layout Standard
+Converts a vector specified by an uvw coordinate into orthonormal X,Y, and
+ Z components.
+\end_layout
+
+\begin_layout Paragraph
+HKLtoUVW.m
+\end_layout
+
+\begin_layout Standard
+Converts an hkl into a uvw, taking temperature into account.
+\end_layout
+
+\begin_layout Paragraph
+HKLtoUVWnotemp.m
+\end_layout
+
+\begin_layout Standard
+Converts an hkl into a uvw, NOT taking temperature into account.
+ This is not used in CTEAS but is included as a tool.
+\end_layout
+
+\begin_layout Paragraph
+MakeMovieFrames.m
+\end_layout
+
+\begin_layout Standard
+Creates a series of frames for the thermal expansion movie.
+ These frames are compiled using the movie2avi function included in Matlab.
+ No compression is used because the GNU/Linux version of Matlab does not
+ include video compression options.
+\end_layout
+
+\begin_layout Paragraph
+namevects.m
+\end_layout
+
+\begin_layout Standard
+Function to output a name for vectors plotted in two-dimensional diagrams.
+\end_layout
+
+\begin_layout Paragraph
+orthToAng.m
+\end_layout
+
+\begin_layout Standard
+Converts a vector specified by X, Y, and Z coordinates in orthonormal space
+ to 
+\begin_inset Formula $\phi$
+\end_inset
+
+ and 
+\begin_inset Formula $\theta$
+\end_inset
+
+ angles with unit length.
+\end_layout
+
+\begin_layout Paragraph
+orthTohkl.m
+\end_layout
+
+\begin_layout Standard
+Converts an orthonormal vector to an hkl vector.
+\end_layout
+
+\begin_layout Paragraph
+PlotEigenvalues.m
+\end_layout
+
+\begin_layout Standard
+Creates a plot of the eigenvalues of the thermal expansion ellipsoid from
+ lowest to highest analyzed temperature.
+ The eigenvalues are sorted using the eigenshuffle.m function to preserve
+ continuity.
+ 
+\end_layout
+
+\begin_layout Paragraph
+plotEllipse.m
+\end_layout
+
+\begin_layout Standard
+Function to plot a slice of a thermal expansion ellipsoid.
+ 
+\end_layout
+
+\begin_layout Paragraph
+plotEllipsoid.m
+\end_layout
+
+\begin_layout Standard
+Outputs coordinates for a mesh of points to be used for plotting a thermal
+ expansion ellipsoid.
+\end_layout
+
+\begin_layout Paragraph
+PlotTempFigure.m
+\end_layout
+
+\begin_layout Standard
+Creates a plot of three-dimensional thermal expansion at a specified temperature.
+ In the CTERun.m script, a range of temperatures can be used as input, creating
+ a new plot for each specified temperature.
+ 
+\end_layout
+
+\begin_layout Paragraph
+RhomtoHex.m
+\end_layout
+
+\begin_layout Standard
+Converts Rhombohedral to Hexagonal.
+\end_layout
+
+\begin_layout Paragraph
+rotateVect.m
+\end_layout
+
+\begin_layout Standard
+Rotates a vector by 
+\begin_inset Formula $\phi$
+\end_inset
+
+ and 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+tdfread.m
+\end_layout
+
+\begin_layout Standard
+Matlab library to read tab delimited files.
+ Typically included with Matlab.
+\end_layout
+
+\begin_layout Paragraph
+UVWtoHKL.m
+\end_layout
+
+\begin_layout Standard
+Converts a uvw to an hkl.
+\end_layout
+
+\begin_layout Paragraph
+xtalCTE.m
+\end_layout
+
+\begin_layout Standard
+Function to calculate thermal expansion tensors and conversion matrices
+ between crystallographic axes and orthonormal axes.
+\end_layout
+
+\begin_layout Paragraph
+xtalCTEprep.m
+\end_layout
+
+\begin_layout Standard
+Function to prepare and sort data for calculating thermal expansion tensors.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part*
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{part}{APPENDIX B: CTEAS InputMaker Operation}
+\end_layout
+
+\end_inset
+
+APPENDIX B: CTEAS InputMaker Operation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../KrivenResearch/Ellipsoid/CTEAS Documentation/Screenshots/CTEAS_InputMaker.bmp
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+CTEAS InputMaker GUI 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:CTEAS-InputMaker-GUI"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+CTEAS InputMaker is an extension of CTEAS that allows the user to create
+ input files for CTEAS based on data gathered and analyzed from a multitude
+ of analysis programs.
+ The number of softwares that can perform Reitveld analysis is ever-growing
+ and rather than create algorithms that can parse the output files from
+ every software, a form is presented to the user for inputting data.
+ As of the current release of CTEAS, CTEAS InputMaker has very basic functionali
+ty.
+ If an incorrect value is written to a file, the user must locate that file,
+ open it in a text editor, and change it there manually without disturbing
+ the syntax and layout of the file.
+ It is recommended that an advanced text editor (Notepad++, Geany) be used
+ to show hidden file characters in the text file.
+\end_layout
+
+\begin_layout Standard
+The following sections describe the operation of CTEAS InputMaker and how
+ it saves files.
+ Later versions of the InputMaker will include the option of editing and
+ deleting input data.
+\end_layout
+
+\begin_layout Standard
+NOTE: CTEAS will NOT function again until the 
+\begin_inset Quotes eld
+\end_inset
+
+Stop
+\begin_inset Quotes erd
+\end_inset
+
+ button on the CTEAS InputMaker GUI has been clicked and the window has
+ closed.
+ This is a GUI limitation.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{section}{0}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{subsection}{0}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Using CTEAS InputMaker to Create Input Files
+\end_layout
+
+\begin_layout Standard
+CTEAS InputMaker is designed to be as simple to use as possible.
+ The following steps should be followed, per phase, to create input files
+ for CTEAS:
+\end_layout
+
+\begin_layout Enumerate
+The 
+\begin_inset Quotes eld
+\end_inset
+
+File Save Path
+\begin_inset Quotes erd
+\end_inset
+
+ should already be populated with the same directory that CTEAS will be
+ using to load files from.
+ Should the user desire to save the files elsewhere, change the path to
+ the desired directory.
+\end_layout
+
+\begin_layout Enumerate
+Specify a name for the phase in the 
+\begin_inset Quotes eld
+\end_inset
+
+Phase Name
+\begin_inset Quotes erd
+\end_inset
+
+ box.
+ This should be the same for all created input files of the same phase that
+ will be included in the CTEAS analysis.
+\end_layout
+
+\begin_layout Enumerate
+Enter the Temperature at which the input file will contain phase data for
+ in the 
+\begin_inset Quotes eld
+\end_inset
+
+Temp (°C)
+\begin_inset Quotes erd
+\end_inset
+
+ box.
+\end_layout
+
+\begin_layout Enumerate
+Enter the chemical formula (no subscripts) or a filename in the 
+\begin_inset Quotes eld
+\end_inset
+
+Chemical Formula or Filename
+\begin_inset Quotes erd
+\end_inset
+
+ box (eg: Filename1_1_2011).
+ No file extensions are necessary.
+\end_layout
+
+\begin_layout Enumerate
+In the 
+\begin_inset Quotes eld
+\end_inset
+
+hkls and d-spacings
+\begin_inset Quotes erd
+\end_inset
+
+ spreadsheet, enter all h, k, l, and d-spacing data in the respective columns.
+ Note that the top row of the spreadsheet contains which column corresponds
+ to which value.
+ The first column contains a #h in the spreadsheet.
+ This # sign is a communication to CTEAS that the line is considered as
+ a comment.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+The spreadsheet data will be treated as a list of comma-separated variables
+ in the backend of the InputMaker program.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Specify the a, b, c, 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, 
+\begin_inset Formula $\beta$
+\end_inset
+
+, and 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ lattice parameter values in their corresponding boxes.
+\end_layout
+
+\begin_layout Enumerate
+Specify the errors in the lattice parameters in their corresponding boxes.
+\end_layout
+
+\begin_layout Enumerate
+Choose a symmetry that describes the phase.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Click the 
+\begin_inset Quotes eld
+\end_inset
+
+Submit
+\begin_inset Quotes erd
+\end_inset
+
+ button.
+ All fields will then be cleared except for the 
+\begin_inset Quotes eld
+\end_inset
+
+Phase Name,
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Chemical Formula or Filename,
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+hkls and d-spacings
+\begin_inset Quotes erd
+\end_inset
+
+ areas of the entry form.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+The 
+\begin_inset Quotes eld
+\end_inset
+
+hkls and d-spacings
+\begin_inset Quotes erd
+\end_inset
+
+ spreadsheet area of the entry form cannot be cleared by the GUI as this
+ is a limitation of the ActiveX implementation of Microsoft Excel using
+ Office Web Components.
+ It is the great hope of this author that this will change someday.
+ While the LabVIEW GUI libraries contain spreadsheet-like components, the
+ Office Web Components utility offers the only spreadsheet component that
+ supports both copy/paste multiple cells support and data output in a reasonable
+ format.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Once all files have been written for a phase, the 
+\begin_inset Quotes eld
+\end_inset
+
+New Phase
+\begin_inset Quotes erd
+\end_inset
+
+ button can be clicked.
+ This will clear all fields except for the 
+\begin_inset Quotes eld
+\end_inset
+
+Chemical Formula or Filename
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+hkls and d-spacings
+\begin_inset Quotes erd
+\end_inset
+
+ areas of the entry form.
+\end_layout
+
+\begin_layout Enumerate
+The 
+\begin_inset Quotes eld
+\end_inset
+
+Clear All Fields
+\begin_inset Quotes erd
+\end_inset
+
+ button will clear all fields on the entry form except for the 
+\begin_inset Quotes eld
+\end_inset
+
+hkls and d-spacings
+\begin_inset Quotes erd
+\end_inset
+
+ area.
+\end_layout
+
+\begin_layout Enumerate
+Once all data has been input for all phases and temperatures, the Stop button
+ should be clicked to close the window.
+ It can be re-opened from the CTEAS GUI at any time.
+\end_layout
+
+\begin_layout Section
+Example Input File Contents
+\end_layout
+
+\begin_layout Standard
+The syntax contained within an input file is very basic.
+ It contains comma-separated variables and a few hidden text components.
+ The hidden components can be seen with an advanced text editor and the
+ rest of the text is shown below for two example phases:
+\end_layout
+
+\begin_layout LyX-Code
+Random other information,,, 
+\end_layout
+
+\begin_layout LyX-Code
+Random other information,,, 
+\end_layout
+
+\begin_layout LyX-Code
+Random other information,,, 
+\end_layout
+
+\begin_layout LyX-Code
+!TEMPERATURE,100,, 
+\end_layout
+
+\begin_layout LyX-Code
+!PHASE,Phasename,, 
+\end_layout
+
+\begin_layout LyX-Code
+!SYMMETRY,Symgroup,, 
+\end_layout
+
+\begin_layout LyX-Code
+!LPA,30,1, 
+\end_layout
+
+\begin_layout LyX-Code
+!LPB,20,2, 
+\end_layout
+
+\begin_layout LyX-Code
+!LPC,10,3, 
+\end_layout
+
+\begin_layout LyX-Code
+!LPALPHA,5,6, 
+\end_layout
+
+\begin_layout LyX-Code
+!LPBETA,7,8, 
+\end_layout
+
+\begin_layout LyX-Code
+!LPGAMMA,9,11, 
+\end_layout
+
+\begin_layout LyX-Code
+!BEGINHKL,,, 
+\end_layout
+
+\begin_layout LyX-Code
+#h,k,l,d(Å) 
+\end_layout
+
+\begin_layout LyX-Code
+1,1,1,2.2807 
+\end_layout
+
+\begin_layout LyX-Code
+!ENDHKL,,, 
+\end_layout
+
+\begin_layout LyX-Code
+!ENDPHASE,,, 
+\end_layout
+
+\begin_layout LyX-Code
+Random other information,,, 
+\end_layout
+
+\begin_layout LyX-Code
+Random other information,,, 
+\end_layout
+
+\begin_layout LyX-Code
+!PHASE,Phasename22,, 
+\end_layout
+
+\begin_layout LyX-Code
+!SYMMETRY,Symgroup22,, 
+\end_layout
+
+\begin_layout LyX-Code
+!LPA,30,1, 
+\end_layout
+
+\begin_layout LyX-Code
+!LPB,20,2, 
+\end_layout
+
+\begin_layout LyX-Code
+!LPC,10,3, 
+\end_layout
+
+\begin_layout LyX-Code
+!LPALPHA,5,6, 
+\end_layout
+
+\begin_layout LyX-Code
+!LPBETA,7,8, 
+\end_layout
+
+\begin_layout LyX-Code
+!LPGAMMA,9,11, 
+\end_layout
+
+\begin_layout LyX-Code
+!BEGINHKL,,, 
+\end_layout
+
+\begin_layout LyX-Code
+#h,k,l,d(Å) 
+\end_layout
+
+\begin_layout LyX-Code
+1,1,1,2.2807 
+\end_layout
+
+\begin_layout LyX-Code
+!ENDHKL,,, 
+\end_layout
+
+\begin_layout LyX-Code
+!ENDPHASE,,, 
+\end_layout
+
+\begin_layout LyX-Code
+!EOF,,,
+\end_layout
+
+\begin_layout Section
+Troubleshooting
+\end_layout
+
+\begin_layout Standard
+Most problems with input files will arise from incorrect formatting of the
+ file.
+ While the CTEAS InputMaker will create a correctly-formatted input file,
+ user-edited files may not work.
+ It is best to compare the edited file with an untouched file in an advanced
+ text editor to ensure compatibility.
+ Any further problems or concerns can be voiced by contacting the previously-pro
+vided contact information.
+\end_layout
+
+\begin_layout Subsection
+Blank Box where hkls and d-spacings spreadsheet should exist
+\end_layout
+
+\begin_layout Standard
+A blank box will be present where the hkls and d-spacings spreadsheet should
+ exist when the Office Web Components from Microsoft are not fully up-to-date.
+ Even if they are installed, there are two (as of 09/26/2011) updates that
+ must be applied with Windows Update that will allow t-he CTEAS InputMaker
+ to function properly.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{section}{0}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{subsection}{0}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part*
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{part}{APPENDIX C: CTEAS Operation Example}
+\end_layout
+
+\end_inset
+
+APPENDIX C: CTEAS Operation Example
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{section}{0}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{subsection}{0}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Creating a set of CSV input files
+\end_layout
+
+\begin_layout Standard
+In order to perform an analysis using CTEAS, input files must first be generated
+ using the CTEAS InputMaker.
+ Most pattern refinement softwares have the option of generating a listing
+ of hkls and d-spacings alongside lattice parameter data.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:CTEAS-InputMaker-GUI-Example"
+
+\end_inset
+
+ has been populated using a .RFL file exported from a refinement using GSAS
+ (see Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:GSAS-Example"
+
+\end_inset
+
+).
+ Once the CTEAS InputMaker sheet is fully populated, clicking 
+\begin_inset Quotes eld
+\end_inset
+
+Submit
+\begin_inset Quotes erd
+\end_inset
+
+ will create the corresponding file.
+ This must be done for each temperature that data exist to generate a list
+ of files for CTEAS to load.
+ Once all files have been generated, clicking the 
+\begin_inset Quotes eld
+\end_inset
+
+Stop
+\begin_inset Quotes erd
+\end_inset
+
+ button will bring the user back to the CTEAS interface.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../KrivenResearch/Ellipsoid/CTEAS Documentation/Figures/InputMaker-Example.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+CTEAS InputMaker GUI Populated with an Entry
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:CTEAS-InputMaker-GUI-Example"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../KrivenResearch/Ellipsoid/CTEAS Documentation/Figures/RFL_Data.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+RFL File exported from GSAS
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:GSAS-Example"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Loading files into CTEAS
+\end_layout
+
+\begin_layout Standard
+Once all files have been created using CTEAS InputMaker, ensure that the
+ 
+\begin_inset Quotes eld
+\end_inset
+
+File Directory Path
+\begin_inset Quotes erd
+\end_inset
+
+ is correct and click the 
+\begin_inset Quotes eld
+\end_inset
+
+Load Files
+\begin_inset Quotes erd
+\end_inset
+
+ button.
+ The list of files should populate as shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Step1-Example"
+
+\end_inset
+
+.
+ Double-check the temperatures and correct them if necessary, then proceed
+ to the STEP 2: ANALYSIS tab.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../KrivenResearch/Ellipsoid/CTEAS Documentation/Figures/Step1-Example.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+STEP 1: DATA with loaded files
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Step1-Example"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Running an analysis
+\end_layout
+
+\begin_layout Standard
+Select a phase to be analyzed by clicking the drop-down menu shown in Figure
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Step2-Example-1"
+
+\end_inset
+
+.
+ The 
+\begin_inset Quotes eld
+\end_inset
+
+Crystal Symmetry
+\begin_inset Quotes erd
+\end_inset
+
+ box will automatically populate with the crystal symmetry read from the
+ input files.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../KrivenResearch/Ellipsoid/CTEAS Documentation/Figures/Step2-Example1.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+STEP 2: ANALYSIS with drop-down menu to select a phase
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Step2-Example-1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Observe the lattice parameters to determine the temperatures for analysis.
+ Select one or more of the lattice parameter checkboxes and click 
+\begin_inset Quotes eld
+\end_inset
+
+View Lattice Parameters
+\begin_inset Quotes erd
+\end_inset
+
+ (see Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Step2-Example-2"
+
+\end_inset
+
+).
+ A plot of the lattice parameters with a polynomial curve fit will appear
+ after a few moments (see Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Step2-LatParam-Example"
+
+\end_inset
+
+).
+ For this example, the phase exists between 25 and 525
+\begin_inset Formula $^{\circ}$
+\end_inset
+
+C.
+ Temperature steps of 25
+\begin_inset Formula $^{\circ}$
+\end_inset
+
+C will be used to run the analysis in this example.
+ It is also important to take note of how the polynomial fit compares to
+ the lattice parameter data.
+ In this case, the 
+\begin_inset Formula $R^{2}$
+\end_inset
+
+ value is very high.
+ Increasing the polynomial fit order would not be useful to gain a better
+ fit.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../KrivenResearch/Ellipsoid/CTEAS Documentation/Figures/Step2-Example2.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+STEP 2: ANALYSIS with Lattice Parameters being viewed
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Step2-Example-2"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../KrivenResearch/Ellipsoid/CTEAS Documentation/Figures/LatParamFit-Example.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Lattice Parameters and viewing their fit
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Step2-LatParam-Example"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Once the temperature parameters have been input (see Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Step2-Example-3"
+
+\end_inset
+
+), clicking the 
+\begin_inset Quotes eld
+\end_inset
+
+Run Analysis
+\begin_inset Quotes erd
+\end_inset
+
+ button will begin the CTE analysis.
+ A green light signals the user to begin viewing the results (see Figure
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Step2-Example-4"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../KrivenResearch/Ellipsoid/CTEAS Documentation/Figures/Step2-Example3.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+STEP 2: ANALYSIS with temperature parameters entered
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Step2-Example-3"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../KrivenResearch/Ellipsoid/CTEAS Documentation/Figures/Step2-Example4.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+STEP 2: ANALYSIS with completed analysis
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Step2-Example-4"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Viewing and saving results
+\end_layout
+
+\begin_layout Standard
+Selecting options and viewing the results of the analysis is user-dependent.
+ At the least, it is suggested to save all data to a .CSV file using the
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Make CSV File
+\begin_inset Quotes erd
+\end_inset
+
+ option.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Step3-Example-1"
+
+\end_inset
+
+ shows all options toggled.
+ This will first generate a movie.
+ The user will see the frames appearing on screen as the movie is being
+ generated.
+ On the last frame, the movie will remain for a few moments.
+ CTEAS is compiling the frames into an .avi file and will automatically close
+ the last image when it has finished compiling the movie.
+ The 3D figure (see Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:3D-Fig-Example"
+
+\end_inset
+
+) and eigenvalue plots (see Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Eigen-Example"
+
+\end_inset
+
+) will appear next while CTEAS saves all of the analysis data to a file
+ (see Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:CSV-example"
+
+\end_inset
+
+).
+ Last, the 2D 
+\begin_inset Quotes eld
+\end_inset
+
+section
+\begin_inset Quotes erd
+\end_inset
+
+ plot (see Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:2D-Section-Example"
+
+\end_inset
+
+) and linear expansion plots will appear.
+ The user can then save these plots as a variety of options consisting of
+ both raster and vector images.
+ Once the user has saved the plots, the analysis can be considered complete.
+ Pressing the 
+\begin_inset Quotes eld
+\end_inset
+
+Reset
+\begin_inset Quotes erd
+\end_inset
+
+ button will clear all data from the program and allow the user to continue
+ with another analysis or pressing the 
+\begin_inset Quotes eld
+\end_inset
+
+Stop
+\begin_inset Quotes erd
+\end_inset
+
+ button will terminate the program.
+ It can then be exited.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../KrivenResearch/Ellipsoid/CTEAS Documentation/Figures/Step3-Example.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+STEP 3: RESULTS with all options toggled and running
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Step3-Example-1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../KrivenResearch/Ellipsoid/CTEAS Documentation/Figures/3DFig-Example.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Example 3D Figure
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:3D-Fig-Example"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../KrivenResearch/Ellipsoid/CTEAS Documentation/Figures/EV-Example.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Plot of Eigenvalues
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Eigen-Example"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../KrivenResearch/Ellipsoid/CTEAS Documentation/Figures/CSV_Output-Example.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+CSV File Output
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:CSV-example"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../KrivenResearch/Ellipsoid/CTEAS Documentation/Figures/2DSection010-Example.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+2-D Planar Section Example
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:2D-Section-Example"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{section}{0}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{subsection}{0}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part*
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{part}{APPENDIX D: CTEAS Algorithm and Error Analysis}
+\end_layout
+
+\end_inset
+
+APPENDIX D: CTEAS Algorithm and Error Analysis
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{section}{0}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{subsection}{0}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Development of Algorithm to Calculate Thermal Expansion Tensors
+\end_layout
+
+\begin_layout Standard
+Calculation of a thermal expansion tensor from refined patterns collected
+ from X-ray diffraction experiments is a complex process that will be outlined
+ in the following sections.
+ The process follows the generalized steps below: 
+\end_layout
+
+\begin_layout Enumerate
+Convert 
+\begin_inset Formula $2\theta$
+\end_inset
+
+ values to 
+\begin_inset Formula $d$
+\end_inset
+
+-spacing using Bragg's Law 
+\end_layout
+
+\begin_layout Enumerate
+Calculate 
+\begin_inset Formula $\alpha_{hkl}$
+\end_inset
+
+ for each 
+\begin_inset Formula $hkl$
+\end_inset
+
+ plane listed in data 
+\end_layout
+
+\begin_layout Enumerate
+Determine the thermal expansion tensor, 
+\begin_inset Formula $\alpha_{ij}$
+\end_inset
+
+, at a single temperature using 
+\begin_inset Formula $\alpha_{hkl}$
+\end_inset
+
+ from the previous step 
+\end_layout
+
+\begin_layout Enumerate
+Determine the thermal expansion tensor for all requisite temperatures 
+\end_layout
+
+\begin_layout Standard
+Bragg's law gives the angles for X-ray scattering from a crystalline lattice.
+ Rearranged for the purpose of this thesis, Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Bragg_Law"
+
+\end_inset
+
+ shows how 
+\begin_inset Formula $d$
+\end_inset
+
+-spacing can be obtained from listed 
+\begin_inset Formula $2\theta$
+\end_inset
+
+ values if wavelength, 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is known.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+d_{hkl}=\frac{n\lambda}{2\sin\theta}\label{eq:Bragg_Law}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Calculation of 
+\begin_inset Formula $\alpha_{hkl}$
+\end_inset
+
+ for 
+\begin_inset Formula $hkl$
+\end_inset
+
+ Planes
+\end_layout
+
+\begin_layout Standard
+It has been mentioned that for low-symmetry crystals, multiple independent
+ measurements of thermal expansion in many directions must be taken to determine
+ a complete thermal expansion tensor.
+ When directionality is taken into account in a crystalline unit cell, thermal
+ expansion can be modified to represent the distance between 
+\begin_inset Formula $hkl$
+\end_inset
+
+ planes.
+ This representation, shown in Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:CTE_Directional"
+
+\end_inset
+
+ relates the thermal expansion in a 
+\begin_inset Formula $hkl$
+\end_inset
+
+ plane to the strain measured in the plane.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\alpha_{hkl}=\frac{dd_{hkl}}{d_{hkl}}\frac{1}{dT}\label{eq:CTE_Directional}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As an example of this, Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Latparam_Trend"
+
+\end_inset
+
+ shows the change in thermal expansion with increasing temperature in the
+ `
+\begin_inset Formula $a$
+\end_inset
+
+' lattice parameter of orthorhombic mullite (
+\begin_inset Formula $\text{Al}_{6}\text{Si}_{2}\text{O}_{13}$
+\end_inset
+
+).
+ A detailed analysis of this system will be provided in Chapter 4.
+ The visible trend in the data shows promise for the application of a mathematic
+al model.
+ A search through literature revealed that H.
+ Küppers assigned a varying-order polynomial to a similar trend and was
+ able to determine a thermal expansion coefficient for a high-symmetry crystal.
+ Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:CTE_Polynomial"
+
+\end_inset
+
+ shows this relationship.
+ Küppers' model is useful for high-symmetry crystals, but for low-symmetry
+ crystals more information about off-axis expansion must be determined.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement htbp
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Figures/Mullite_Latparams.png
+	width 4in
+	keepAspectRatio
+	BoundingBox 0 0 358 226
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% Mullite_Latparams.png: 611x386 pixel, 123dpi, 12.62x7.97 cm, bb=0 0 358 226
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Plot of the 
+\begin_inset Formula $a$
+\end_inset
+
+ Lattice Parameter and its Change with Increasing Temperature in Orthorhombic
+ Mullite (
+\begin_inset Formula $\text{Al}_{6}\text{Si}_{2}\text{O}_{13}$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Latparam_Trend"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\alpha_{hkl}=\frac{dd_{hkl}}{d_{hkl}}\frac{1}{dT}=A_{n,0}+A_{n,1}T+A_{n,2}T^{2}\label{eq:CTE_Polynomial}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since data for this thesis were taken using X-ray diffraction, many more
+ planes of expansion can be modeled with Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:CTE_Polynomial"
+
+\end_inset
+
+ if the 
+\begin_inset Quotes eld
+\end_inset
+
+A
+\begin_inset Quotes erd
+\end_inset
+
+ coefficients can be determined for each 
+\begin_inset Formula $hkl$
+\end_inset
+
+ plane.
+ The middle and right portions of Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:CTE_Polynomial"
+
+\end_inset
+
+ show that a differential equation has been formed.
+ Rearranging the equation and integrating over a range of temperature yields
+ the following relationship:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\int_{d_{hkl,T_{0}}}^{d_{hkl,T}}\frac{dd_{hkl}}{d_{hkl}}=\int_{T_{0}}^{T}\left[A_{n,0}+A_{n,1}T+A_{n,2}T^{2}\right]dT\label{eq:CTE_Integral}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The solution to Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:CTE_Integral"
+
+\end_inset
+
+ is shown in Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:CTE_Solution"
+
+\end_inset
+
+.
+ Using linear regression techniques, a value for the 
+\begin_inset Quotes eld
+\end_inset
+
+A
+\begin_inset Quotes erd
+\end_inset
+
+ coefficients can be determined.
+ The non-log forms of the 
+\begin_inset Quotes eld
+\end_inset
+
+A
+\begin_inset Quotes erd
+\end_inset
+
+ coefficients can then be substituted back into Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:CTE_Polynomial"
+
+\end_inset
+
+ to yield a thermal expansion coefficient in a specific 
+\begin_inset Formula $hkl$
+\end_inset
+
+ plane as a function of temperature.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\ln d_{hkl,T}=\ln d_{hkl,T_{0}}+A_{n,0}\left(T-T_{0}\right)+\frac{1}{2}A_{n,1}\left(T-T_{0}\right)^{2}+\frac{1}{3}A_{n,2}\left(T-T_{0}\right)^{3}\label{eq:CTE_Solution}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Determination of CTE Tensor from 
+\begin_inset Formula $\alpha_{hkl}$
+\end_inset
+
+ at Temperature
+\end_layout
+
+\begin_layout Standard
+The value 
+\begin_inset Formula $\alpha_{hkl}$
+\end_inset
+
+ is the magnitude of thermal expansion in the corresponding 
+\begin_inset Formula $hkl$
+\end_inset
+
+ plane.
+ Since it is known that thermal expansion can be represented as a second-rank
+ tensor, it is reasonable to show a relation between this magnitude of thermal
+ expansion and the thermal expansion tensor itself.
+ Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:CTE_Tensor_Calc"
+
+\end_inset
+
+ shows the relationship of the CTE tensor to a set of 
+\begin_inset Formula $X$
+\end_inset
+
+, 
+\begin_inset Formula $Y$
+\end_inset
+
+, and 
+\begin_inset Formula $Z$
+\end_inset
+
+ coordinates in the Cartesian coordinate system.
+ A system of these equations can be used to solve for 
+\begin_inset Formula $\alpha_{ij}$
+\end_inset
+
+ if 
+\begin_inset Formula $X$
+\end_inset
+
+, 
+\begin_inset Formula $Y$
+\end_inset
+
+, 
+\begin_inset Formula $Z$
+\end_inset
+
+, and 
+\begin_inset Formula $\alpha_{hkl}$
+\end_inset
+
+ are known.
+ 
+\begin_inset Formula $\alpha_{hkl}$
+\end_inset
+
+ has been determined from the previous discussion based on Eqns.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:CTE_Directional"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:CTE_Integral"
+
+\end_inset
+
+, and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:CTE_Solution"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\alpha_{hkl}=\alpha_{11}X^{2}+\alpha_{22}Y^{2}+\alpha_{33}Z^{2}+2\alpha_{12}XY+2\alpha_{23}YZ+2\alpha_{13}XZ\label{eq:CTE_Tensor_Calc}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The 
+\begin_inset Formula $X$
+\end_inset
+
+, 
+\begin_inset Formula $Y$
+\end_inset
+
+, and 
+\begin_inset Formula $Z$
+\end_inset
+
+ variables in Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:CTE_Tensor_Calc"
+
+\end_inset
+
+ are in relation to a vector in Cartesian space.
+ Since 
+\begin_inset Formula $hkl$
+\end_inset
+
+ planes exist in crystallographic space, a method for converting reliably
+ between coordinate systems is necessary both to convert the planar normal
+ of a 
+\begin_inset Formula $hkl$
+\end_inset
+
+ plane to Cartesian coordinates and to facilitate the graphical representation
+ of data using computer graphing utilities based in Cartesian space.
+\end_layout
+
+\begin_layout Standard
+In order to solve for the 
+\begin_inset Formula $\alpha_{ij}$
+\end_inset
+
+ coefficients in Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:CTE_Tensor_Calc"
+
+\end_inset
+
+, a system of equations equal to the number of unknown coefficients must
+ be created.
+ For example, a minimum of six 
+\begin_inset Formula $hkl$
+\end_inset
+
+ planes with corresponding 
+\begin_inset Formula $d$
+\end_inset
+
+-spacing measurements is required to determine the 
+\begin_inset Formula $\alpha_{ij}$
+\end_inset
+
+ coefficients in a triclinic system.
+ Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tbl:symmetries"
+
+\end_inset
+
+ can be referenced for the number of measurements based on higher symmetries.
+ Each 
+\begin_inset Formula $hkl$
+\end_inset
+
+ has a planar normal that can be converted to a vector in Cartesian coordinates
+ using Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ConMat"
+
+\end_inset
+
+.
+ These Cartesian coordinates can then be used as the 
+\begin_inset Formula $X$
+\end_inset
+
+, 
+\begin_inset Formula $Y$
+\end_inset
+
+, and 
+\begin_inset Formula $Z$
+\end_inset
+
+ values in Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:CTE_Tensor_Calc"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left(\begin{array}{c}
+X\\
+Y\\
+Z
+\end{array}\right)=\left[\begin{array}{ccc}
+A_{1,1} & A_{1,2} & 0\\
+0 & A_{2,2} & 0\\
+A_{3,1} & A_{3,2} & A_{3,3}
+\end{array}\right]\left(\begin{array}{c}
+h\\
+k\\
+l
+\end{array}\right)\label{eq:ConMat}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray}
+A_{1,1} & = & a\sin\beta\nonumber \\
+A_{1,2} & = & b\left(\cos\gamma-\frac{\cos\beta\cos\alpha}{\sin\beta}\right)\nonumber \\
+A_{2,2} & = & b\left(\sin^{2}\alpha-\frac{A_{1,2}^{2}}{b^{2}}\right)^{\frac{1}{2}}\nonumber \\
+A_{3,1} & = & a\cos\beta\nonumber \\
+A_{3,2} & = & b\cos\alpha\nonumber \\
+A_{3,3} & = & c\nonumber \\
+\label{eq:ConMatEqs}
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement htbp
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+The Seven Crystal Symmetry Conditions
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="4">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Symmetry
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Lattice Conditions
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Angular Conditions
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Ind.
+ Meas.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Cubic 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a=b=c$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\alpha=\beta=\gamma=90^{\circ}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Tetragonal 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a=b\neq c$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\alpha=\beta=\gamma=90^{\circ}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Orthorhombic 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a\neq b\neq c$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\alpha=\beta=\gamma=90^{\circ}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Hexagonal 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a=b\neq c$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\alpha=\beta=90^{\circ}$
+\end_inset
+
+, 
+\begin_inset Formula $\gamma=120^{\circ}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Trigonal 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a=b=c$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\alpha=\beta=\gamma\neq90^{\circ}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Monoclinic 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a\neq b\neq c$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\alpha=\gamma=90^{\circ}$
+\end_inset
+
+, 
+\begin_inset Formula $\beta\neq90^{\circ}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Triclinic 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $a\neq b\neq c$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\alpha\neq\beta\neq\gamma\neq90^{\circ}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tbl:symmetries"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ConMat"
+
+\end_inset
+
+ is based on the resolution of the crystallographic axis system into 
+\begin_inset Formula $X$
+\end_inset
+
+, 
+\begin_inset Formula $Y$
+\end_inset
+
+, and 
+\begin_inset Formula $Z$
+\end_inset
+
+ components through trigonometry.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Axis_Overlay"
+
+\end_inset
+
+ shows how this concept can be visualized.
+ The crystallographic coordinate system, when overlaid upon the Cartesian
+ coordinate system shows that each axis can be resolved into components
+ that contribute to distance along a Cartesian axis.
+ These sine and cosine components are the 
+\begin_inset Formula $A_{i,j}$
+\end_inset
+
+ variables in Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ConMat"
+
+\end_inset
+
+.
+ Their form follow Eqns.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ConMatEqs"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Orientation of the system relies on IEEE standards for ensuring that the
+ 
+\begin_inset Formula $c$
+\end_inset
+
+-axis of the crystallographic coordinate system is aligned with the 
+\begin_inset Formula $Z$
+\end_inset
+
+-axis of the Cartesian coordinate system.
+ If the 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ angle in the system is 
+\begin_inset Formula $90^{\circ}$
+\end_inset
+
+, the 
+\begin_inset Formula $b$
+\end_inset
+
+-axis should align with the 
+\begin_inset Formula $Y$
+\end_inset
+
+-axis of the Cartesian system, however the 
+\begin_inset Formula $X$
+\end_inset
+
+-axis will lie in the 
+\begin_inset Formula $a$
+\end_inset
+
+-
+\begin_inset Formula $c$
+\end_inset
+
+ plane of the crystallographic coordinate sytem.
+ In high symmetries where 
+\begin_inset Formula $\alpha=\beta=\gamma=90^{\circ}$
+\end_inset
+
+, 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $a$
+\end_inset
+
+ are coincident as well.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement htpd
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Figures/Crystal_Axes.png
+	width 3.5in
+	keepAspectRatio
+	BoundingBox 0 0 565 498
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% Crystal_Axes.png: 753x664 pixel, 96dpi, 19.92x17.57 cm, bb=0 0 565 498
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Overlay of Cartesian Coordinate System on Triclinic Coordinate System Using
+ IEEE Standard.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Axis_Overlay"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A set of more than six 
+\begin_inset Formula $hkl$
+\end_inset
+
+ expansion planes is typically obtained from data, resulting in an over-determin
+ed system of equations.
+ The solution to an over-determined system requires the implementation of
+ algorithms that many analysis packages, such as MATLAB already contain.
+ Therefore, reliance on the solution capabilities of MATLAB is used to determine
+ the 
+\begin_inset Formula $\alpha_{ij}$
+\end_inset
+
+ coefficients in Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:CTE_Tensor_Calc"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Application over a Range of Temperatures
+\end_layout
+
+\begin_layout Standard
+For each desired temperature, the algorithm described previously must be
+ applied to calculate a thermal expansion tensor.
+ Over a range of temperatures, changes in this tensor can show trends in
+ thermal expansion.
+ These trends can be correlated with atomic positioning to show directions
+ of strong or weak bonding in a unit cell.
+\end_layout
+
+\begin_layout Subsection
+Plotting Thermal Expansion
+\end_layout
+
+\begin_layout Standard
+A second-rank tensor such as a thermal expansion tensor can be plotted in
+ three-dimensional Cartesian space as an ellipsoid.
+ A method for plotting a representative surface of a thermal expansion ellipsoid
+, called a quadric surface, involves isolating points on a unit sphere and
+ 
+\begin_inset Quotes eld
+\end_inset
+
+expanding
+\begin_inset Quotes erd
+\end_inset
+
+ the sphere into the shape of the quadric.
+ The isolated Cartesian coordinates of a single point on the sphere can
+ be converted using an inverse of Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ConMat"
+
+\end_inset
+
+ to coordinates in crystallographic space.
+ This set of coordinates can be used as the direction of a vector normal
+ to a 
+\begin_inset Formula $hkl$
+\end_inset
+
+ plane.
+ With a 
+\begin_inset Formula $hkl$
+\end_inset
+
+ determined and a thermal expansion tensor, the thermal expansion in that
+ plane can be determined.
+ This can be done for many points along the sphere until a surface can be
+ created.
+ This surface, a representation quadric of a thermal expansion ellipsoid,
+ can represent the thermal expansion in three-dimensional space of a crystal
+ at a given temperature.
+ Subsequent plots of thermal expansion with increasing temperature can show
+ the change in the representation quadric.
+ This will be demonstrated later in this thesis.
+\end_layout
+
+\begin_layout Section
+CTERun - Command Line Implementation
+\end_layout
+
+\begin_layout Standard
+The concept for calculating and plotting a thermal expansion ellipsoid has
+ been demonstrated previously.
+ The Coefficient of Thermal Expansion Analysis Suite, a realization of this
+ concept in software form, was initially developed as a set of command-line
+ utilities written in MATLAB.
+ It is a set of functions coded in MATLAB that can be run one after the
+ other.
+ Its initial implementation left much to be desired in terms of automation,
+ ease of use, and extensibility.
+ A wrapper script, CTERun.m was created to facilitate an automation process.
+ This wrapper script could be modified with file paths and analysis options
+ before an analysis and then run.
+\end_layout
+
+\begin_layout Standard
+As the CTERun wrapper script developed, a set of goals was created for CTERun
+ to accomplish in an automated fashion: 
+\end_layout
+
+\begin_layout Itemize
+Calculate the thermal expansion tensor over a range of input temperatures
+ 
+\end_layout
+
+\begin_layout Itemize
+Create a movie of representative thermal expansion quadric surfaces over
+ the range of input temperatures 
+\end_layout
+
+\begin_layout Itemize
+Output a .csv file containing relevant tensor information over a range of
+ temperatures.
+ 
+\end_layout
+
+\begin_layout Standard
+A successful completion of these goals led to the idea to represent thermal
+ expansion data in other useful forms.
+ The goals were updated to include: 
+\end_layout
+
+\begin_layout Itemize
+Expand .csv output to include eigenvalues, eigenvectors, and averages of
+ calculated thermal expansion tensors 
+\end_layout
+
+\begin_layout Itemize
+View cross-sections of the thermal expansion quadric surface 
+\end_layout
+
+\begin_layout Itemize
+Plot thermal expansion along a single direction 
+\end_layout
+
+\begin_layout Itemize
+Switch between utilizing 
+\begin_inset Formula $hkl$
+\end_inset
+
+ and 
+\begin_inset Formula $uvw$
+\end_inset
+
+ location systems for all functions 
+\end_layout
+
+\begin_layout Itemize
+Plot eigenvalues of the tensor with increasing temperature.
+ 
+\end_layout
+
+\begin_layout Standard
+CTERun was originally written to work only with output files from Reitveld
+ refinement using MDI JADE.
+ Through the continued usage of CTERun, it was determined that other output
+ files should be supported.
+ Since programming a method for reading multiple input file types and their
+ potential formatting changes with new releases was a very large task, the
+ CTERun program was configured to read its own type of input file instead.
+ The input files can be created by editing and saving a text template with
+ the relevant information.
+ A set of these files is then read into the CTERun program.
+ User-based formatting errors in the data files during their creation prompted
+ the need for a clean, reliable, and easy to use interface to create the
+ data file for the user.
+ It was decided that MATLAB could not accomplish this task and was left
+ for future work.
+\end_layout
+
+\begin_layout Standard
+CTERun's final release encompassed about 1800 lines of MATLAB code in separate
+ function files (See Appendix A for a complete code listing of functions).
+ Each function can be used independently, provided that the required variables
+ have been passed.
+ The CTERun wrapper script automates these functions into a basic analysis
+ that proceeds through calculating thermal expansion tensors and presenting
+ the data.
+ The presentation functions and wrapper script can accomplish all of the
+ goals set for CTERun, but the level of MATLAB knowledge required to operate
+ the program is considerable for a new user.
+ An alternative method for performing an analysis was desirable for the
+ sustainability of CTERun and its later acceptance in industry.
+\end_layout
+
+\begin_layout Section
+Error Analysis in CTEAS
+\end_layout
+
+\begin_layout Standard
+The most recent changes to CTEAS focused on the uncertainty in the calculation
+ of a CTE tensor by the program.
+ The input files for CTEAS contain areas that express the uncertainty in
+ the measurement of the lattice parameters of the crystal.
+ This uncertainty and the error in fitting with polynomial functions propagates
+ throughout each calculation in the program.
+ It is then apparent that a detailed analysis of how the error propagates
+ through calculation be performed.
+\end_layout
+
+\begin_layout Subsection
+Error in Lattice Parameter Fits
+\end_layout
+
+\begin_layout Standard
+CTEAS applies a varying-order polynomial fit to lattice parameters with
+ increasing temperature.
+ It has been mentioned that this fit is integral to calculating a conversion
+ matrix between Cartesian and crystallographic coordinate systems.
+ Each lattice parameter value is read from a CTEAS input file with a correspondi
+ng uncertainty in its measurement.
+ Since CTEAS interpolates between these lattice parameter values, an estimate
+ of the error in the interpolated value must be determined.
+\end_layout
+
+\begin_layout Standard
+A 90% confidence bound was chosen as the starting point for this error estimate.
+ The 90% confidence estimate is then compared to a value interpolated from
+ a curve fit through the lattice parameter data with added error at each
+ point.
+ If the interpolated value of the lattice-error curve is greater than the
+ 90% conficence estimate, the interpolated value of the error is used.
+ By this method, there will always be at least a 90% confidence interval
+ around any value interpolated from the lattice parameter data.
+\end_layout
+
+\begin_layout Subsection
+Error in Conversion Matrices
+\end_layout
+
+\begin_layout Standard
+Since there is error present in the interpolated lattice parameter values,
+ it must be propagated through the calculations of each component of the
+ Cartesian-Crystallographic and Crystallographic-Cartesian conversion matrices.
+ These matrices, as discussed previously, are used to convert the planar
+ normal of a 
+\begin_inset Formula $hkl$
+\end_inset
+
+ plane to and from Cartesian coordinates.
+ The error in the conversion is directly related to the error in the lattice
+ parameters; propagation of error through the calculations follows a combination
+ of error propagation calculations from conventional uncertainty analysis.
+ Each component of Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ConMat"
+
+\end_inset
+
+, shown in Eqns.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ConMatEqs"
+
+\end_inset
+
+ has an associated error that is propagated from lattice parameter uncertainty.
+ These errors can be combined to form an uncertainty vector that represents
+ the uncertainty in the 
+\begin_inset Formula $X$
+\end_inset
+
+, 
+\begin_inset Formula $Y$
+\end_inset
+
+, and 
+\begin_inset Formula $Z$
+\end_inset
+
+ coordinates of the planar normal to a 
+\begin_inset Formula $hkl$
+\end_inset
+
+ plane.
+\end_layout
+
+\begin_layout Subsection
+Error in Thermal Expansion Tensor Calculation
+\end_layout
+
+\begin_layout Standard
+It has been shown that a series of equations in the form of Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:CTE_Tensor_Calc"
+
+\end_inset
+
+ can be used to solve for the components of a thermal expansion tensor.
+ Since there is uncertainty in 
+\begin_inset Formula $X$
+\end_inset
+
+, 
+\begin_inset Formula $Y$
+\end_inset
+
+, and 
+\begin_inset Formula $Z$
+\end_inset
+
+ for each equation in the system and individual propagation of those uncertainti
+es into the coefficients of thermal expansion is outside the scope of this
+ research, a simpler method for estimating uncertainty in the thermal expansion
+ tensor has been used:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\Delta\alpha=\text{cond(}A\text{)}\times\frac{\text{norm(}\Delta A\text{)}}{\text{norm(}A\text{)}}\label{eq:uncertainty_tensor}
+\end{equation}
+
+\end_inset
+
+where the 
+\begin_inset Formula $A$
+\end_inset
+
+ matrix represents the entire system of 
+\begin_inset Formula $X$
+\end_inset
+
+, 
+\begin_inset Formula $Y$
+\end_inset
+
+, 
+\begin_inset Formula $Z$
+\end_inset
+
+, 
+\begin_inset Formula $XY$
+\end_inset
+
+, 
+\begin_inset Formula $YZ$
+\end_inset
+
+, and 
+\begin_inset Formula $XZ$
+\end_inset
+
+ components of Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:CTE_Tensor_Calc"
+
+\end_inset
+
+ and 
+\begin_inset Formula $\Delta A$
+\end_inset
+
+ is the associated error in each term.
+\end_layout
+
+\begin_layout Standard
+The normalized relative error multiplied by the condition number of the
+ 
+\begin_inset Formula $A$
+\end_inset
+
+ matrix yields an estimate of the error in the calculation of the 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ matrix.
+ The certainty of a calculated value is directly related to how close the
+ condition number is to a value of 1.
+ The condition number is a normalization of the row maxima of a matrix.
+ If there is high uncertainty in the original input lattice parameters,
+ the condition number will be high, leading to even higher uncertainty in
+ the calculation of the thermal expansion tensor components.
+\end_layout
+
+\end_body
+\end_document

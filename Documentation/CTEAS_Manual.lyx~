@@ -1,0 +1,781 @@
+#LyX 1.6.9 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+CTEAS User Manual
+\end_layout
+
+\begin_layout Author
+Zachary A.
+ Jones
+\end_layout
+
+\begin_layout Date
+Draft - May 5, 2011
+\end_layout
+
+\begin_layout Section*
+Acknowledgements
+\end_layout
+
+\begin_layout Section*
+Introduction
+\end_layout
+
+\begin_layout Standard
+The Coefficient of Thermal Expansion Analysis Suite (CTEAS) is an aid for
+ determining the thermal expansion of a material.
+ A series of heating and cooling X-ray diffraction patterns can be analyzed
+ using Rietveld refinement in a program such as JADE or GSAS and the resulting
+ hkl values and spacings can be used as an input for CTEAS.
+ CTEAS takes this input and fits a quadratic curve to the lattice parameters
+ contained in the input.
+ It then forms a rank two thermal expansion tensor, based on crystal symmetry
+ for a range of temperatures.
+ Using these tensors, thermal expansion is characterized in three dimensions
+ of crystallographic space.
+ CTEAS allows the user to specify various output options including spreadsheet
+ data, two- or three-dimensional plots of thermal expansion, and movies
+ of the expansion over a range of temperatures.
+ 
+\end_layout
+
+\begin_layout Section*
+Installation and Setup
+\end_layout
+
+\begin_layout Standard
+The installation of CTEAS is straightforward.
+ Two supporting programs are needed: 
+\end_layout
+
+\begin_layout Enumerate
+2009 NI Run-Time Libraries 
+\end_layout
+
+\begin_layout Enumerate
+Matlab (2007 and later) 
+\end_layout
+
+\begin_layout Standard
+With Matlab and the NI Run-Time Libraries installed, the CTEAS executable
+ file can run.
+ A set of Matlab function files is included with the executable that must
+ be kept in an easily-located area of the computer filesystem.
+ These Matlab function files form the backbone of the CTEAS program.
+ They can also be used independently from the CTEAS graphical user interface
+ (GUI) to perform analyses in Matlab without the use of LabView Run-Time
+ Libraries.
+ It is much more difficult and time-consuming to perform an analysis this
+ way, but other specialized options can be thought of and implemented between
+ analysis steps in Matlab.
+\end_layout
+
+\begin_layout Section*
+How to Use CTEAS
+\end_layout
+
+\begin_layout Standard
+CTEAS is divided into a three-step tabbed interface.
+ The content of each tab relates to the functions of the program that are
+ applicable at that stage during operation.
+ A green light in the bottom right corner of each tab will signal that the
+ user is ready to proceed to the next step.
+ The following sections describe the operation of the program during each
+ step and a basic operation flow.
+ 
+\end_layout
+
+\begin_layout Subsection*
+Step 1: Loading Files
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Screenshots/CTEAS_Sshot_Tab1.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+CTEAS GUI - Step 1: Loading Files
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:CTEAS-GUI-Step1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Pre-Run Path Configuration
+\end_layout
+
+\begin_layout Standard
+CTEAS requires the location of the supporting Matlab function files to be
+ specified.
+ It also requires a folder containing the input files to be specified.
+ The following steps must be taken to ensure the correct operation of the
+ program:
+\end_layout
+
+\begin_layout Enumerate
+Click on the file icon beside the text box under 
+\begin_inset Quotes eld
+\end_inset
+
+CTERun Directory.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Navigate to the CTERun_vxx directory, navigate inside the directory, then
+ click the 
+\begin_inset Quotes eld
+\end_inset
+
+Choose Folder
+\begin_inset Quotes erd
+\end_inset
+
+ button.
+ Note that CTERun_vxx denotes the latest version of CTERun.
+\end_layout
+
+\begin_layout Enumerate
+Click on the file icon beside the text box under 
+\begin_inset Quotes eld
+\end_inset
+
+File Directory Path.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Navigate to the folder containing the files to be analyzed, navigate inside
+ the directory, then click the 
+\begin_inset Quotes eld
+\end_inset
+
+Choose Folder
+\begin_inset Quotes erd
+\end_inset
+
+ button.
+\end_layout
+
+\begin_layout Enumerate
+Note that the files to be analyzed must all contain the same naming convention.
+ Specify a portion of that naming convention that applies to all files to
+ be analyzed in the text box under 
+\begin_inset Quotes eld
+\end_inset
+
+Filename String.
+\begin_inset Quotes erd
+\end_inset
+
+ In the example in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:CTEAS-GUI-Step1"
+
+\end_inset
+
+, the Filename String text box contains HfO2Stand, which is common to all
+ files listed in the file window.
+\end_layout
+
+\begin_layout Enumerate
+Specify a room temperature Platinum lattice constant in the box below 
+\begin_inset Quotes eld
+\end_inset
+
+RT Platinum Lattice Constant
+\begin_inset Quotes erd
+\end_inset
+
+ if applicable.
+ This is optional and only used if Platinum peaks have been used to determine
+ temperature for analysis.
+ Note that this can be any value for loading files and the temperatures
+ can be manually changed if incorrect.
+ A second method of temperature correction will be described later.
+\end_layout
+
+\begin_layout Subsubsection*
+File Support and Formatting Custom Files
+\end_layout
+
+\begin_layout Standard
+CTEAS is configured to read output from MDI JADE 9.
+ If analyses were not performed in MDI JADE 9, a custom input file can be
+ created.
+ Refer to the example input file included in Appendix ___ as a guide for
+ creating this custom input file.
+ This input file can be created in a text editor or spreadsheet editor for
+ user comfort.
+\end_layout
+
+\begin_layout Subsubsection*
+Loading Files
+\end_layout
+
+\begin_layout Standard
+If the steps for Pre-Run Path Configuration have been correctly followed
+ and either JADE or custom files are located in the 
+\begin_inset Quotes eld
+\end_inset
+
+File Directory Path
+\begin_inset Quotes erd
+\end_inset
+
+ location, the Load Files button can be clicked.
+ CTEAS will then locate all files containing the filename string specified
+ in step 5 above and list them in the 
+\begin_inset Quotes eld
+\end_inset
+
+Temperature Data
+\begin_inset Quotes erd
+\end_inset
+
+ area.
+ A green light will turn on in the bottom right of the interface, signifying
+ that data have been loaded and values have been saved.
+ It is then up to the user to decide whether the displayed temperature values
+ are correct before proceeding to Step 2: Run Setup.
+\end_layout
+
+\begin_layout Subsubsection*
+Temperature Options
+\end_layout
+
+\begin_layout Standard
+CTEAS can only output thermal expansion correctly if temperature is input
+ correctly.
+ There are three methods for determining or inputting temperatures in CTEAS
+ once files are read.
+ If Platinum peaks are being used to determine temperature, the Get RT Plat.
+ Const.
+ button will automatically adjust the temperatures using the room temperature
+ Platinum lattice constant contained in the input files.
+ Adjustment of this value can also be performed using the input box on the
+ left of the screen, titled 
+\begin_inset Quotes eld
+\end_inset
+
+RT Platinum Lattice Constant.
+\begin_inset Quotes erd
+\end_inset
+
+ The user can also manually edit values by double-clicking on incorrect
+ values in the 
+\begin_inset Quotes eld
+\end_inset
+
+Temperature Data
+\begin_inset Quotes erd
+\end_inset
+
+ window and writing new values.
+ During this editing period, the green light will turn off, letting the
+ user know that the program is not ready to proceed anymore.
+ Once all desired new values are set manually, click the 
+\begin_inset Quotes eld
+\end_inset
+
+Manual Temp Edit
+\begin_inset Quotes erd
+\end_inset
+
+ button and the green light will appear lit again.
+ This signifies being able to proceed to Step 2: Run Setup.
+\end_layout
+
+\begin_layout Subsection*
+Step 2: Run Setup
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Screenshots/CTEAS_Sshot_Tab2.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+CTEAS GUI - Step 2: Run Setup
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:CTEAS-GUI-Step2"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Choosing a Detected Phase
+\end_layout
+
+\begin_layout Standard
+Step 2 centers around correctly setting up an analysis and choosing a phase
+ contained within the input files.
+ An input file can contain multiple phases and materials, leaving the user
+ to decide which phase and material to analyze.
+ The following steps should be followed for desired operation of CTEAS:
+\end_layout
+
+\begin_layout Enumerate
+Click on the drop-down arrow beside the box under 
+\begin_inset Quotes eld
+\end_inset
+
+Phase to be Analyzed
+\begin_inset Quotes erd
+\end_inset
+
+ and select a material and phase for analysis.
+ The Crystal Symmetry box will be automatically set for the corresponding
+ symmetry.
+ If this symmetry is undesirable (instantaneous strain calculations, etc),
+ check the 
+\begin_inset Quotes eld
+\end_inset
+
+Symmetry Override
+\begin_inset Quotes erd
+\end_inset
+
+ box and select a new symmetry.
+ This is for advanced use of the CTEAS program.
+\end_layout
+
+\begin_layout Enumerate
+Specify a 
+\begin_inset Quotes eld
+\end_inset
+
+Polynomial Fit Order.
+\begin_inset Quotes erd
+\end_inset
+
+ The polynomial fit order (usually 2) specifies the order of the polynomial
+ used to fit the lattice parameters for calculation of thermal expansion
+ coefficients.
+ If a straight line is given while using an order of 2, use 3 instead.
+ Any other values of the polynomial fit order are not recommended.
+\end_layout
+
+\begin_layout Enumerate
+If a specified phase is considered in rhombohedral symmetry, a special case
+ can be triggered using the 
+\begin_inset Quotes eld
+\end_inset
+
+IN CASE OF RHOMBOHEDRAL
+\begin_inset Quotes erd
+\end_inset
+
+ box.
+ This special case will analyze a phase as a true rhombohedral symmetry
+ rather than triclinic.
+ Limited functionality is available in Step 3 for this case because of the
+ orientation correction applied to the thermal expansion tensor that is
+ generated for this case.
+ It is recommended to analyze a rhombohedral symmetry triclinically for
+ comparison with any other phases contained in a material, but left to the
+ user's expertise for this special case.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Temperature ranges must be specified for analysis.
+ The 
+\begin_inset Quotes eld
+\end_inset
+
+Low Temperature
+\begin_inset Quotes erd
+\end_inset
+
+ may not be more than 50°C lower than the minimum temperature specified
+ in the input files.
+ For example, if room temperature data (20°C) was taken, the lowest temperature
+ that could be entered in the 
+\begin_inset Quotes eld
+\end_inset
+
+Low Temperature
+\begin_inset Quotes erd
+\end_inset
+
+ box would be -30.
+ Any temperature entered beyond this bound will result in a coefficient
+ of thermal expansion matrix of zeroes.
+ An upper bound of 50°C is placed on the 
+\begin_inset Quotes eld
+\end_inset
+
+High Temperature
+\begin_inset Quotes erd
+\end_inset
+
+ as well to ensure that the analysis does not extrapolate too far beyond
+ collected data.
+ It is recommended that 
+\begin_inset Formula $(HighT-LowT)/\Delta T$
+\end_inset
+
+ is a whole number for later analysis.
+\end_layout
+
+\begin_layout Enumerate
+The 
+\begin_inset Quotes eld
+\end_inset
+
+Temperature Step
+\begin_inset Quotes erd
+\end_inset
+
+ box determines the 
+\begin_inset Formula $\Delta T$
+\end_inset
+
+ for analysis.
+ A temperature step of 25 will calculate a coefficient of thermal expansion
+ matrix for every 25°C within the low and high temperature range.
+ It is recommended that 
+\begin_inset Formula $100/\Delta T$
+\end_inset
+
+ is equal to a whole number for later analysis.
+\end_layout
+
+\begin_layout Enumerate
+Once Steps 1-5 have been completed, the 
+\begin_inset Quotes eld
+\end_inset
+
+Run Analysis
+\begin_inset Quotes erd
+\end_inset
+
+ button can be pressed.
+ This may take some time for the analysis to run, but once it has completed,
+ the 
+\begin_inset Quotes eld
+\end_inset
+
+Results Ready
+\begin_inset Quotes erd
+\end_inset
+
+ light will turn on.
+ This signifies that Step 2: Analyze Data has been completed and that the
+ user can proceed to the final step.
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+Viewing Lattice Parameters
+\end_layout
+
+\begin_layout Standard
+At any time after selecting a phase to be analyzed, the user can view and
+ save lattice parameters.
+ The lattice parameters will be saved to the same folder containing the
+ input files as a comma separated variable (.csv) file.
+ There is no need to include the file extension while specifying a filename.
+ 
+\end_layout
+
+\begin_layout Standard
+The lattice parameters can also be plotted directly from the interface by
+ checking the boxes corresponding to which parameters the user wishes to
+ view and clicking the 
+\begin_inset Quotes eld
+\end_inset
+
+View Crystal Lattice Parameters
+\begin_inset Quotes erd
+\end_inset
+
+ button.
+ Note that two separate graphs may appear that contain the a,b, and c and
+ alpha, beta, and gamma parameters respectively.
+ The example in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:CTEAS-GUI-Step2"
+
+\end_inset
+
+ shows just the 
+\begin_inset Quotes eld
+\end_inset
+
+b
+\begin_inset Quotes erd
+\end_inset
+
+ parameter checked.
+ This will produce a single graph with the 
+\begin_inset Quotes eld
+\end_inset
+
+b
+\begin_inset Quotes erd
+\end_inset
+
+ lattice parameter plotted.
+ Note that these parameters are the actual lattice parameters parsed from
+ the input files.
+ Later versions of CTEAS may include support for viewing the polynomial
+ fits alongside the lattice parameters, but this is not implemented as of
+ this publication.
+ 
+\end_layout
+
+\begin_layout Subsection*
+Step 3: Results
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Screenshots/CTEAS_Sshot_Tab3.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+CTEAS GUI - Step 3: Results
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:CTEAS-GUI-Step3"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Viewing and Saving Figures
+\end_layout
+
+\begin_layout Standard
+The function of Step 3: Results is to allow the user to view and save a
+ variety of methods for displaying the thermal expansion of a chosen material
+ and phase.
+ The following list will detail what each option means:
+\end_layout
+
+\begin_layout Itemize
+Make Movie
+\end_layout
+
+\begin_layout Standard
+A movie of a thermal expansion ellipsoid can be created and saved.
+ This movie shows the change of the thermal expansion ellipsoid over the
+ range of temperatures from Step 2: Analyze Data.
+ Note that there is a 5-second 
+\begin_inset Quotes eld
+\end_inset
+
+freeze
+\begin_inset Quotes erd
+\end_inset
+
+ at the end of the temperature range to allow a still frame for description
+ during a presentation (some older movie softwares go to a black screen
+ when the movie is complete, thus a 5 second 
+\begin_inset Quotes eld
+\end_inset
+
+pause
+\begin_inset Quotes erd
+\end_inset
+
+ allows the presenter to have a picture for a few seconds longer).
+ The movie file name can be user-specified (once again, the extension is
+ not needed) and the movie will be saved in the same directory as the input
+ files.
+ Creating a movie will output an uncompressed .avi file.
+ The size of the file can be very large depending on the size (in pixels)
+ that is chosen for the movie/figure output.
+ It is recommended that a 640x480 movie be generated, but larger movies
+ may be generated and transcoded with editing software should they be necessary.
+\end_layout
+
+\begin_layout Itemize
+Make Figure
+\end_layout
+
+\begin_layout Itemize
+Make Eigenvalue Plot
+\end_layout
+
+\begin_layout Itemize
+Make CSV File
+\end_layout
+
+\begin_layout Itemize
+Make 2D Figures
+\end_layout
+
+\begin_layout Itemize
+Make Expansion Line
+\end_layout
+
+\begin_layout Subsubsection*
+Data Outputs
+\end_layout
+
+\begin_layout Subsection*
+Troubleshooting
+\end_layout
+
+\begin_layout Subsection*
+Contact Information
+\end_layout
+
+\begin_layout Subsection*
+List of Matlab Functions
+\end_layout
+
+\end_body
+\end_document

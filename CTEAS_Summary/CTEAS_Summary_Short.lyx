@@ -1,0 +1,662 @@
+#LyX 1.6.9 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+CTE Analysis Suite 0.3 Beta - Overview
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+The CTE Analysis Suite (CTEAS) is a utility for determining the thermal
+ expansion characteristics of a material that has been analyzed via 
+\shape italic
+in-situ
+\shape default
+ x-ray diffraction during a heating and/or cooling cycle.
+ Its main function is to output three-dimensional plots of thermal expansion
+ ellipsoids and animate them according to heating and cooling.
+ A thermal expansion ellipsoid is the rate at which a material expands in
+ all directions at a specific temperature.
+ By analyzing these ellipsoids at a range of temperatures, the expansion
+ characteristics of a material can be determined.
+ CTEAS can also output a multitude of other analysis options such as the
+ eigenvalues of the thermal expansion ellipsoid, lattice parameters, polar
+ diagrams of the ellipsoid, and excel-readable file output.
+ Currently, CTEAS can use a specific filetype produced by MDI JADE as an
+ input.
+ It can also handle a specifically-formatted .csv file input file for users
+ without access to MDI JADE.
+\end_layout
+
+\begin_layout Subsection
+Program Operation
+\end_layout
+
+\begin_layout Standard
+CTEAS is designed to operate using a tabbed interface that dictate what
+ the user should start with and proceed to.
+ The tabs are labeled as Step 1, 2, and 3 respectively.
+ When CTEAS has enough information for the step to be complete, a green
+ indicator becomes lit on the current step.
+ This is a signal to the user that CTEAS can move forward with analysis.
+ In some cases, the user may require other configurations and changes that
+ CTEAS does not recognize as important, such as modifying temperatures,
+ removing files from analysis, or overriding crystal symmetry details.
+ This is left to the knowledge of the user as, at the point the user is
+ operating CTEAS, they will know the intricate details of their analysis
+ setup better than the program can.
+ The following sections detail the operation of CTEAS from Step 1 to 3.
+\end_layout
+
+\begin_layout Subsubsection
+Step 1 - Loading Files and Setting up Analysis
+\end_layout
+
+\begin_layout Standard
+A diffraction pattern is obtained from an 
+\shape italic
+in-situ
+\shape default
+ x-ray diffraction experiment and analyzed with the use of software such
+ as MDI JADE.
+ MDI JADE will output a series of crystal plane orientations, d-spacings,
+ present phases at temperature, and lattice parameters which are saved to
+ data files having a '.rrp' extension.
+ These data files are the working inputs for the CTE Analysis Suite.
+ The user can specify a directory containing a set of data files from a
+ JADE or custom analysis and load them into the CTEAS workspace.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:CTE-Analysis-Suite"
+
+\end_inset
+
+ displays the current 
+\begin_inset Quotes eld
+\end_inset
+
+Step 1
+\begin_inset Quotes erd
+\end_inset
+
+ tab of the CTEAS user interface.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/jonesza/Dropbox/KrivenResearch/Ellipsoid/CTEAS/Documentation/Screenshots/CTEAS_Sshot_Tab1.png
+	lyxscale 40
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+CTE Analysis Suite Interface - Step 1
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:CTE-Analysis-Suite"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When the 
+\begin_inset Quotes eld
+\end_inset
+
+Load Files
+\begin_inset Quotes erd
+\end_inset
+
+ button is pressed, CTEAS runs a function that gathers the data from the
+ specified files and stores them in a container variable.
+ CTEAS is equipped to determine data file temperatures using a room temperature
+ platinum lattice constant.
+ This constant can be manually input or obtained by selecting a file in
+ the main listbox and pressing the 
+\begin_inset Quotes eld
+\end_inset
+
+Get RT Plat.
+ Const.
+\begin_inset Quotes erd
+\end_inset
+
+ button.
+ Temperatures can also be manually entered in the listbox and saved for
+ analysis by pressing the 
+\begin_inset Quotes eld
+\end_inset
+
+Manual Temp Edit
+\begin_inset Quotes erd
+\end_inset
+
+ button.
+ The user also has the option of removing a JADE file from analysis by selecting
+ it in the listbox and pressing the 
+\begin_inset Quotes eld
+\end_inset
+
+Remove from Analysis
+\begin_inset Quotes erd
+\end_inset
+
+ button.
+ This will instruct the CTEAS program to ignore that specific JADE file
+ and continue with its analysis.
+ At the end of the 
+\begin_inset Quotes eld
+\end_inset
+
+Step 1
+\begin_inset Quotes erd
+\end_inset
+
+ tab, the user has loaded a set of JADE files, adjusted the corresponding
+ temperatures, and removed any outlier data from the analysis.
+ A green light will be lit when data is ready to be passed to the next step
+ in CTEAS.
+\end_layout
+
+\begin_layout Subsubsection
+Step 2 - Running Analysis
+\end_layout
+
+\begin_layout Standard
+Once CTEAS and the user have decided that 
+\begin_inset Quotes eld
+\end_inset
+
+Step 1
+\begin_inset Quotes erd
+\end_inset
+
+ is complete, the user may choose to proceed to 
+\begin_inset Quotes eld
+\end_inset
+
+Step 2
+\begin_inset Quotes erd
+\end_inset
+
+ by clicking the corresponding tab on the interface.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:CTE-Analysis-Suite-step2"
+
+\end_inset
+
+ shows the layout of the 
+\begin_inset Quotes eld
+\end_inset
+
+Step 2 - Analyze Data
+\begin_inset Quotes erd
+\end_inset
+
+ tab.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/jonesza/Dropbox/KrivenResearch/Ellipsoid/CTEAS/Documentation/Screenshots/CTEAS_Sshot_Tab2.png
+	lyxscale 40
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+CTE Analysis Suite Interface - Step 2
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:CTE-Analysis-Suite-step2"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+From the previous step, the user has loaded necessary data for program operation
+ into CTEAS.
+ A series of dropdown menus and options are displayed in 
+\begin_inset Quotes eld
+\end_inset
+
+Step 2
+\begin_inset Quotes erd
+\end_inset
+
+ that will allow the user to specify which phase to analyze, at what temperature
+s to simulate analysis, view crystal lattice parameters, and export these
+ lattice parameters to a file.
+ The user must select the phase from the corresponding dropdown menu before
+ any other functions on the step will cooperate.
+ These phases have been read directly from the JADE files.
+ Once the user has selected a phase, the symmetry is automatically selected
+ as well.
+ If the user should decide to override the symmetry, a check box is available
+ to 
+\begin_inset Quotes eld
+\end_inset
+
+free
+\begin_inset Quotes erd
+\end_inset
+
+ the dropdown menu for symmetry selection.
+ 
+\end_layout
+
+\begin_layout Standard
+Polynomial fit order is left to the experience of the user.
+ This polynomial order is the order of a least-squares curve fit to a, b,
+ and c lattice parameters for use in determining functions for the coefficients
+ of thermal expansion of the material in those axial directions.
+ A second- or third-order polynomial has been most commonly used to fit
+ these data.
+ As per the temperature range from the data shown in 
+\begin_inset Quotes eld
+\end_inset
+
+Step 1,
+\begin_inset Quotes erd
+\end_inset
+
+ the user can set a similar temperature range in boxes that require a low
+ temperature, high temperature, and temperature step size between the extremes.
+ If the user wished to analyze every 25 degrees (C) between a range of temperatu
+re, this configuration can accomodate.
+ The temperature range is limited to +/- 50 degrees (C) outside the experimental
+ data temperatures.
+\end_layout
+
+\begin_layout Standard
+At any time after the phase has been selected, the user can view lattice
+ parameter values or export the lattice parameters to a spreadsheet-readable
+ file.
+ By checking which lattice parameters to view, one or two graphs (corresponding
+ to a,b, and c and alpha, beta, and gamma respectively) will display showing
+ the chosen lattice parameters.
+ The user can visually assess whether the lattice parameter error from an
+ input file is too large to include in the analysis.
+ Following any further user-desired modification, the 
+\begin_inset Quotes eld
+\end_inset
+
+Run Analysis
+\begin_inset Quotes erd
+\end_inset
+
+ button can be pressed.
+ A short time later, the 
+\begin_inset Quotes eld
+\end_inset
+
+Results Ready
+\begin_inset Quotes erd
+\end_inset
+
+ indicator will light.
+ This is the indication that the user can proceed to the 
+\begin_inset Quotes eld
+\end_inset
+
+Step 3 - Results
+\begin_inset Quotes erd
+\end_inset
+
+ tab.
+\end_layout
+
+\begin_layout Subsubsection
+Step 3 - Viewing Results
+\end_layout
+
+\begin_layout Standard
+After the user has completed 
+\begin_inset Quotes eld
+\end_inset
+
+Step 2,
+\begin_inset Quotes erd
+\end_inset
+
+ the results of the analysis can be configured and viewed through the 
+\begin_inset Quotes eld
+\end_inset
+
+Step 3 - Results
+\begin_inset Quotes erd
+\end_inset
+
+ tab, shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:CTE-Analysis-Suite-step3"
+
+\end_inset
+
+.
+ The options currently include the ability to create a thermal expansion
+ movie, a figure at a desired temperature, plot and view eigenvalues of
+ the thermal expansion tensors, create cutaway figures (2-dimensional) along
+ crystallographic axes of the thermal expansion ellipsoid, output tensors
+ and eigenvalues to a file, and plot expansion along a vector within the
+ crystal.
+ The thermal expansion movie option will plot the thermal expansion ellipsoid
+ of the analyzed data at the range of temperatures set in 
+\begin_inset Quotes eld
+\end_inset
+
+Step 2,
+\begin_inset Quotes erd
+\end_inset
+
+ encoding them as they are plotted into an '.avi' file.
+ This can be used to show how the rate of thermal expansion of a material
+ changes as temperature increases.
+ A single frame, or figure can be plotted using the 
+\begin_inset Quotes eld
+\end_inset
+
+Make Figure
+\begin_inset Quotes erd
+\end_inset
+
+ option and specifying a temperature in the corresponding temperature box.
+ All figures and the movie can be plotted to a user-specified pixel size
+ in the event a user would need to resize a default-size figure for a presentati
+on and lose plot resolution.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/jonesza/Dropbox/KrivenResearch/Ellipsoid/CTEAS/Documentation/Screenshots/CTEAS_Sshot_Tab3.png
+	lyxscale 40
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+CTE Analysis Suite Interface - Step 3
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:CTE-Analysis-Suite-step3"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The 
+\begin_inset Quotes eld
+\end_inset
+
+Plot Eigenvalues
+\begin_inset Quotes erd
+\end_inset
+
+ option will generate a plot of the eigenvalues of the thermal expansion
+ tensors across the range of temperatures set in 
+\begin_inset Quotes eld
+\end_inset
+
+Step 2.
+\begin_inset Quotes erd
+\end_inset
+
+ Generally, sharp changes in the eigenvalue slopes can indicate a radical
+ change in the thermal expansion behavior of the material.
+ These eigenvalues and the thermal expansion tensor values can be output
+ to a '.csv' file using the 
+\begin_inset Quotes eld
+\end_inset
+
+Make CSV File
+\begin_inset Quotes erd
+\end_inset
+
+ option and assigning a filename in the corresponding text box.
+\end_layout
+
+\begin_layout Standard
+The 
+\begin_inset Quotes eld
+\end_inset
+
+Make 2D Figures
+\begin_inset Quotes erd
+\end_inset
+
+ option will generate figures of a cross-section of the thermal expansion
+ ellipsoid.
+ An example figure is shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:CTE-Analysis-Suite-step3-1"
+
+\end_inset
+
+.
+ These cross-sections are plotted perpendicular to a user-specified crystal
+ vector and are configured to show how temperature has changed the orientation
+ and shape of the ellipsoid.
+ The blue rings correspond to the lowest temperature and the red rings correspon
+d to the highest temperature.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/jonesza/Dropbox/KrivenResearch/Ellipsoid/CTEAS/Documentation/Screenshots/CTE_CrossSection010.png
+	lyxscale 40
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+CTE Analysis Suite - 2D Figure
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:CTE-Analysis-Suite-step3-1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Any or all of these options can be checked before the 
+\begin_inset Quotes eld
+\end_inset
+
+Get Results
+\begin_inset Quotes erd
+\end_inset
+
+ button is pressed.
+ Once the 
+\begin_inset Quotes eld
+\end_inset
+
+Get Results
+\begin_inset Quotes erd
+\end_inset
+
+ button is pressed, the 
+\begin_inset Quotes eld
+\end_inset
+
+Busy
+\begin_inset Quotes erd
+\end_inset
+
+ indicator will light.
+ Depending on the options selected, it may remain on for a period of time.
+ When it has gone off, the results will display shortly after and the '.csv'
+ file and movie, if requested, will have been saved to the directory containing
+ the original input files.
+\end_layout
+
+\begin_layout Section
+Changes from Alpha
+\end_layout
+
+\begin_layout Standard
+The current version of CTEAS has been updated to a Beta release, signifying
+ that it is stable enough to be used for daily research tasks.
+ Most, if not all, major bugs and errors in the program have been fixed.
+ In the future, CTEAS will be provided to a small group of external testers
+ to gather information about their needs and opinions about current functionalit
+y.
+ With the information gathered from the user group, CTEAS can then move
+ forward as a full release.
+ 
+\end_layout
+
+\end_body
+\end_document
